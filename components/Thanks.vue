@@ -18,6 +18,5 @@ export default {
   },
 };
 </script>
-.thanks__title { }
 
 <style scoped></style>
