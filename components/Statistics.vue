@@ -6,7 +6,7 @@
         Каждый 3-й в стране уверен, что рак неизлечим. А это примерно 48 918 000
         человек.
       </p>
-      <statusbarBig />
+      <!-- <statusbarBig></statusbarBig> -->
       <h2 class="statistics__count">1 из 3</h2>
       <span class="statistics__source">Левада-Центр 2018</span>
     </div>
@@ -16,7 +16,7 @@
         Каждый 3-й в стране уверен, что рак неизлечим. А это примерно 48 918 000
         человек.
       </p>
-      <statusbarBig />
+      <!-- <statusbarBig></statusbarBig> -->
       <h2 class="statistics__count">1 из 3</h2>
       <span class="statistics__source">Левада-Центр 2018</span>
     </div>
@@ -26,7 +26,7 @@
         Каждый 3-й в стране уверен, что рак неизлечим. А это примерно 48 918 000
         человек.
       </p>
-      <statusbarSmall />
+      <!-- <statusbarBig></statusbarBig> -->
       <h2 class="statistics__count">1 из 3</h2>
       <span class="statistics__source">Левада-Центр 2018</span>
     </div>
@@ -36,7 +36,7 @@
         Каждый 3-й в стране уверен, что рак неизлечим. А это примерно 48 918 000
         человек.
       </p>
-      <statusbarSmall />
+      <!-- <statusbarBig></statusbarBig> -->
       <h2 class="statistics__count">1 из 3</h2>
       <span class="statistics__source">Левада-Центр 2018</span>
     </div>
@@ -44,8 +44,8 @@
 </template>
 
 <script>
-import StatusbarSmall from '@/components/ui/statusbarSmall';
-import StatusbarBig from '@/components/ui/statusbarBig';
+import StatusbarSmall from '@/components/ui/StatusbarSmall';
+import StatusbarBig from '@/components/ui/StatusbarBig';
 export default {
   statusbarBig: StatusbarBig,
   statusbarSmall: StatusbarSmall,

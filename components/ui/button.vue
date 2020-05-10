@@ -1,11 +1,50 @@
 <template>
-  <div>
-    <button class="button"></button>
-  </div>
+  <button
+    :class="['button', `button_theme_${theme}`]"
+    @click="$emit('btnClick')"
+  >
+    <slot>Some Button</slot>
+  </button>
 </template>
 
 <script>
-export default {};
+export default {
+  props: ['theme'],
+};
 </script>
 
-<style scoped></style>
+<style scoped>
+.button {
+  font-size: 16px;
+  cursor: pointer;
+  padding: 10px;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+.button_theme_light {
+  background-color: white;
+  color: black;
+  border: none;
+}
+.button_theme_light:hover {
+  opacity: 0.9;
+  background-color: white;
+  color: black;
+}
+.button_theme_purple {
+  background-color: #613a93;
+  color: white;
+  width: 226px;
+}
+.button_theme_purple:hover {
+  background-color: #613a93;
+  color: white;
+  opacity: 0.9;
+}
+@media screen and (max-width: 390px) {
+  .button {
+    font-size: 12px;
+    padding: 5px;
+  }
+}
+</style>
