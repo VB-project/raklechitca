@@ -25,6 +25,8 @@ export default {
   background-color: white;
   color: black;
   border: none;
+  padding: 0;
+  font-size: 1.125rem;
 }
 .button_theme_light:hover {
   opacity: 0.9;

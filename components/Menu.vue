@@ -9,7 +9,6 @@
     >
       Главная
     </nuxt-link>
-
     <nuxt-link
       exact
       no-prefetch
@@ -19,60 +18,28 @@
     >
       Истории
     </nuxt-link>
-
-    <nxt-button
-      @btnClick="$emit('btnClick')"
-      class="menu__button"
-      :theme="'light'"
-    >
-      Рассказать историю
-    </nxt-button>
   </nav>
 </template>
 
 <script>
-import Button from '@/components/ui/Button';
-export default {
-  components: {
-    'nxt-button': Button,
-  },
-};
+export default {};
 </script>
 
 <style scoped>
+.menu {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 .menu__link {
-  margin-right: 20px;
+  text-decoration: none;
+  font-size: 1.125rem;
+  color: #000000;
+  margin: 0 20px;
 }
-.menu__link:last-of-type {
-  margin-right: 0;
-}
-.menu__button {
-  margin-left: 20px;
-}
-@media screen and (max-width: 768px) {
-  .menu {
-    display: flex;
-    flex-direction: column;
-  }
-  .menu__link {
-    line-height: 2;
-    margin-right: 0;
-  }
-  .menu__button {
-    margin-left: 0;
-  }
-}
-@media screen and (max-width: 390px) {
-  .menu {
-    flex-direction: row;
-    margin-top: 20px;
-  }
-  .menu__link {
-    line-height: 2;
-    margin-right: 20px;
-  }
-  .menu__button {
-    margin-left: 20px;
-  }
+.menu__link:hover {
+  opacity: 0.8;
 }
 </style>
