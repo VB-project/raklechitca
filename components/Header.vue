@@ -16,8 +16,6 @@
         Рассказать историю
       </nxt-button>
     </div>
-
-    <!-- <main-menu @btnClick="$emit('btnClick')" /> -->
   </header>
 </template>
 

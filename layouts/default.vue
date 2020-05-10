@@ -101,18 +101,4 @@ li {
   position: fixed;
   bottom: 40px;
 }
-
-@media screen and (max-width: 450px) {
-  html {
-    font-size: 14px;
-  }
-  ul {
-    padding-left: 1.5rem;
-  }
-}
-@media screen and (max-width: 390px) {
-  html {
-    font-size: 12px;
-  }
-}
 </style>

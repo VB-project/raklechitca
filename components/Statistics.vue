@@ -6,37 +6,40 @@
         Каждый 3-й в стране уверен, что рак неизлечим. А это примерно 48 918 000
         человек.
       </p>
-      <!-- <statusbarBig></statusbarBig> -->
+      <statusbar :value="1" :maxValue="3" />
       <h2 class="statistics__count">1 из 3</h2>
       <span class="statistics__source">Левада-Центр 2018</span>
     </div>
 
+    <h2 class="statistics__title">Статистика по онкозаболеваниям</h2>
     <div class="statistics__card">
       <p class="statistics__card-text">
         Каждый 3-й в стране уверен, что рак неизлечим. А это примерно 48 918 000
         человек.
       </p>
-      <!-- <statusbarBig></statusbarBig> -->
+      <statusbar :value="1" :maxValue="3" />
       <h2 class="statistics__count">1 из 3</h2>
       <span class="statistics__source">Левада-Центр 2018</span>
     </div>
 
+    <h2 class="statistics__title">Статистика по онкозаболеваниям</h2>
     <div class="statistics__card">
       <p class="statistics__card-text">
         Каждый 3-й в стране уверен, что рак неизлечим. А это примерно 48 918 000
         человек.
       </p>
-      <!-- <statusbarBig></statusbarBig> -->
+      <statusbar :value="1" :maxValue="3" />
       <h2 class="statistics__count">1 из 3</h2>
       <span class="statistics__source">Левада-Центр 2018</span>
     </div>
 
+    <h2 class="statistics__title">Статистика по онкозаболеваниям</h2>
     <div class="statistics__card">
       <p class="statistics__card-text">
         Каждый 3-й в стране уверен, что рак неизлечим. А это примерно 48 918 000
         человек.
       </p>
-      <!-- <statusbarBig></statusbarBig> -->
+      <statusbar :value="1" :maxValue="3" />
       <h2 class="statistics__count">1 из 3</h2>
       <span class="statistics__source">Левада-Центр 2018</span>
     </div>
@@ -44,12 +47,16 @@
 </template>
 
 <script>
-import StatusbarSmall from '@/components/ui/StatusbarSmall';
-import StatusbarBig from '@/components/ui/StatusbarBig';
+import Statusbar from '@/components/ui/Statusbar';
+
 export default {
-  statusbarBig: StatusbarBig,
-  statusbarSmall: StatusbarSmall,
+  components: {
+    statusbar: Statusbar,
+  },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.statistics__container {
+}
+</style>
