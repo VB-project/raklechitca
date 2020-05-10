@@ -5,34 +5,22 @@
     <!-- ВОТ ЗДЕСЬ НАЧИНАЕТСЯ НОВОЕ -->
     <overlay v-if="popupShown" @overlayClick="popupHandler"></overlay>
     <pop-up v-if="popupShown" @closeClick="popupHandler" :theme="'dark'">
+      <h1>Шаг 1 из 12</h1>
       <form @submit.prevent="submitQuestionForm" class="question-form">
-        <nxt-input
-          :placeholder="'Your Name'"
-          :labelText="'Ваше имя'"
-          :type="'text'"
-          :name="'name'"
-          :required="'required'"
-          v-model="email"
-        />
-        <nxt-input
-          :placeholder="'hello@jhkjhgk.ru'"
-          :labelText="'Email'"
-          :type="'email'"
-          :name="'email'"
-          :required="'required'"
-          v-model="email"
-        />
         <nxt-textarea
           class="question-form__textarea"
-          :placeholder="'Ваше сообщение'"
-          :labelText="'Ваше сообщение'"
+          :placeholder="'Напишите тут'"
+          :labelText="'Как Вас Зовут?'"
           :name="'message'"
           :required="'required'"
           v-model="message"
         />
-        <nxt-button class="question-form__button" type="submit" :theme="'light'"
-          >Отправить</nxt-button
-        >
+        <div class="question-form__button-container">
+          <nxt-button class="button" type="submit" :theme="'light'"
+            >Назад</nxt-button
+          >
+          <nxt-button type="submit" :theme="'purple'">Далее</nxt-button>
+        </div>
       </form>
     </pop-up>
   </div>
@@ -78,7 +66,6 @@ export default {
 
 <style>
 html {
-  font-family: 'Jet Brains', monospace;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
@@ -107,16 +94,13 @@ li {
 }
 /*  СТИЛИ ФОРМЫ */
 .question-form {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 20px;
+  margin-top: 40px;
 }
-.question-form__textarea {
-  grid-column: span 2;
+.question-form__button-container {
+  position: fixed;
+  bottom: 40px;
 }
-.question-form__button {
-  grid-column: span 2;
-}
+
 @media screen and (max-width: 450px) {
   html {
     font-size: 14px;

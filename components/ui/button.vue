@@ -19,6 +19,7 @@ export default {
   cursor: pointer;
   padding: 10px;
   box-sizing: border-box;
+  max-width: 100%;
 }
 .button_theme_light {
   background-color: white;
@@ -33,6 +34,7 @@ export default {
 .button_theme_purple {
   background-color: #613a93;
   color: white;
+  width: 226px;
 }
 .button_theme_purple:hover {
   background-color: #613a93;

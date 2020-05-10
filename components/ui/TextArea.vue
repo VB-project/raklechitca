@@ -20,12 +20,20 @@ export default {
 .textarea textarea {
   display: block;
   width: 100%;
-  min-height: 150px;
-  margin-top: 10px;
-  border: 1px solid black;
+  max-height: 100%;
+  margin-top: 130px;
+  resize: none;
+  border: none;
+  border-bottom: 1px solid #e7e7e7;
   padding: 5px;
-  font-size: 14px;
+  font-size: 1.125rem;
   box-sizing: border-box;
   font-family: inherit;
+}
+
+.question-form__textarea {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #000;
 }
 </style>
