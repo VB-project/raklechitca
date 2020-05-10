@@ -1,13 +1,19 @@
 <template>
   <div class="contacts__container">
-    <span class="contacts__sicial">
+    <span class="contacts__social">
       Мы в
-      <a href="">Инстаграмме</a>
+      <a href="https://www.instagram.com/raklechitsa/" class="contacts__link"
+        >Инстаграмме</a
+      >
       и
-      <a href="">Youtube</a>
+      <a
+        href="https://www.youtube.com/results?search_query=%23%D1%8D%D1%82%D0%BE%D0%BD%D0%B5%D0%BB%D0%B5%D1%87%D0%B8%D1%82%D1%81%D1%8F"
+        class="contacts__link"
+        >Youtube</a
+      >
     </span>
 
-    <span class="contacts__share">Поделитесь !!Мнемоник</span>
+    <span class="contacts__share">Поделитесь &#8599;</span>
   </div>
 </template>
 
@@ -15,4 +21,23 @@
 export default {};
 </script>
 
-<style scoped></style>
+<style scoped>
+.contacts__container {
+  display: flex;
+  flex-direction: column;
+}
+.contacts__social {
+  font-size: 1.125rem;
+}
+.contacts__link {
+  text-decoration: none;
+  color: #000000;
+}
+.contacts__link:hover {
+  opacity: 0.8;
+}
+.contacts__share {
+  font-size: 1.125rem;
+  margin-top: 44px;
+}
+</style>

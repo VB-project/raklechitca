@@ -20,4 +20,20 @@ export default {
 </script>
 .thanks__title { }
 
-<style scoped></style>
+<style scoped>
+.thanks__container {
+  height: 256px;
+  padding-top: 60px;
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: space-between;
+  align-items: stretch;
+}
+.thanks__title {
+  max-width: 23%;
+  font-size: 2rem;
+}
+</style>

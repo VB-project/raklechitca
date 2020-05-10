@@ -25,10 +25,12 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 76px;
 }
 .header__logo {
   font-size: 1rem;
   text-decoration: none;
-  max-width: 25%;
+  max-width: 20%;
+  margin-left: 5%;
 }
 </style>
