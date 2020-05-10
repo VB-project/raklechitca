@@ -49,7 +49,6 @@
     </info>
 
     <thanks />
-    <footer />
   </div>
 </template>
 

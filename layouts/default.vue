@@ -2,6 +2,7 @@
   <div>
     <main-header @btnClick="popupHandler" />
     <nuxt />
+    <nxt-footer />
     <!-- ВОТ ЗДЕСЬ НАЧИНАЕТСЯ НОВОЕ -->
     <overlay v-if="popupShown" @overlayClick="popupHandler"></overlay>
     <pop-up v-if="popupShown" @closeClick="popupHandler" :theme="'dark'">
@@ -33,6 +34,7 @@ import PopUp from '@/components/PopUp';
 import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
 import TextArea from '@/components/ui/TextArea';
+import Footer from '@/components/Footer';
 export default {
   components: {
     'main-header': Header,
@@ -41,6 +43,7 @@ export default {
     'nxt-button': Button,
     'nxt-input': Input,
     'nxt-textarea': TextArea,
+    'nxt-footer': Footer,
   },
   methods: {
     popupHandler() {
