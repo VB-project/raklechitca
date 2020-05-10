@@ -18,7 +18,6 @@
     <about />
 
     <statistics />
-
     <info>
       <h1>#РАКЛЕЧИТСЯ</h1>
       <h2>О проекте</h2>
@@ -78,6 +77,7 @@ export default {
   },
   data() {
     return {
+      popupShow: false,
       users: [
         {
           id: '1',

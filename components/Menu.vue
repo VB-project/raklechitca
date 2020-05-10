@@ -1,45 +1,78 @@
 <template>
   <nav class="menu">
-    <ul class="menu__items">
-      <li class="menu__item">
-        <nuxt-link
-          exact
-          no-prefetch
-          active-class="active"
-          class="menu__link"
-          to="/"
-        >
-          Главная
-        </nuxt-link>
-      </li>
-      <li class="menu__item">
-        <nuxt-link
-          exact
-          no-prefetch
-          active-class="active"
-          class="menu__link"
-          to="/stories"
-        >
-          Истории
-        </nuxt-link>
-      </li>
-      <li class="menu__item">
-        <nuxt-link
-          exact
-          no-prefetch
-          active-class="active"
-          class="menu__link"
-          to="/tellstory"
-        >
-          Рассказать историю
-        </nuxt-link>
-      </li>
-    </ul>
+    <nuxt-link
+      exact
+      no-prefetch
+      active-class="active"
+      class="menu__link"
+      to="/"
+    >
+      Главная
+    </nuxt-link>
+
+    <nuxt-link
+      exact
+      no-prefetch
+      active-class="active"
+      class="menu__link"
+      to="/stories"
+    >
+      Истории
+    </nuxt-link>
+
+    <nxt-button
+      @btnClick="$emit('btnClick')"
+      class="menu__button"
+      :theme="'light'"
+    >
+      Рассказать историю
+    </nxt-button>
   </nav>
 </template>
 
 <script>
-export default {};
+import Button from '@/components/ui/Button';
+export default {
+  components: {
+    'nxt-button': Button,
+  },
+};
 </script>
 
-<style scoped></style>
+<style scoped>
+.menu__link {
+  margin-right: 20px;
+}
+.menu__link:last-of-type {
+  margin-right: 0;
+}
+.menu__button {
+  margin-left: 20px;
+}
+@media screen and (max-width: 768px) {
+  .menu {
+    display: flex;
+    flex-direction: column;
+  }
+  .menu__link {
+    line-height: 2;
+    margin-right: 0;
+  }
+  .menu__button {
+    margin-left: 0;
+  }
+}
+@media screen and (max-width: 390px) {
+  .menu {
+    flex-direction: row;
+    margin-top: 20px;
+  }
+  .menu__link {
+    line-height: 2;
+    margin-right: 20px;
+  }
+  .menu__button {
+    margin-left: 20px;
+  }
+}
+</style>

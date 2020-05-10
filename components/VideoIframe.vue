@@ -1,10 +1,7 @@
 <template>
   <div class="video-iframe">
     <iframe
-      width="560"
-      height="315"
       :src="url"
-      frameborder="0"
       allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
       allowfullscreen
     >
@@ -18,4 +15,27 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.video-iframe {
+  width: 60%;
+  padding-bottom: calc(9 * 60% / 16);
+  position: relative;
+}
+
+iframe {
+  border: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .video-iframe {
+    width: 100%;
+    padding-bottom: calc(9 * 100% / 16);
+  }
+}
+</style>
