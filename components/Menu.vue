@@ -42,4 +42,24 @@
 export default {};
 </script>
 
-<style scoped></style>
+<style scoped>
+.menu {
+  width: 28%;
+  margin-right: 5%;
+}
+.menu__items {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.menu__link {
+  text-decoration: none;
+  font-size: 1.125rem;
+  color: #000000;
+}
+.menu__link:hover {
+  opacity: 0.8;
+}
+</style>
