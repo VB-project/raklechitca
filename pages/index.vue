@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-    <info />
+    <info :theme="'tall'" />
     <story />
-    <info>
+    <info :theme="'thin'">
       <h2>И В ОТЛИЧИЕ ОТ РАКА, #ЭТОНЕЛЕЧИТСЯ</h2>
     </info>
     <habits>
@@ -10,7 +10,7 @@
         <card :title="user.name" :text="user.description" :url="user.image" />
       </panel>
     </habits>
-    <info>
+    <info :theme="'thin'">
       <h2>РАССКАЗЫВАЙТЕ ВАШИ ИСТОРИИ В ИНСТАГРАМ #ЭТОНЕЛЕЧИТСЯ</h2>
     </info>
     <instagram />
@@ -18,8 +18,9 @@
     <about />
 
     <statistics />
-    <info>
+    <info :theme="'thin'">
       <h1>#РАКЛЕЧИТСЯ</h1>
+
       <h2>О проекте</h2>
       <div>
         <p>

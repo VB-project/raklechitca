@@ -11,7 +11,7 @@
       <nxt-button
         @btnClick="$emit('btnClick')"
         class="menu__button"
-        :theme="'light '"
+        :theme="'light'"
       >
         Рассказать историю
       </nxt-button>
