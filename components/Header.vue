@@ -6,16 +6,27 @@
     <h1 class="header__logo" v-else>
       Проект Благотворительного Фонда Константина Хабенского
     </h1>
-    <main-menu />
+    <div class="header__menu-container">
+      <main-menu />
+      <nxt-button
+        @btnClick="$emit('btnClick')"
+        class="menu__button"
+        :theme="'light'"
+      >
+        Рассказать историю
+      </nxt-button>
+    </div>
   </header>
 </template>
 
 <script>
 import Menu from '@/components/Menu';
+import Button from '@/components/ui/Button';
 
 export default {
   components: {
     'main-menu': Menu,
+    'nxt-button': Button,
   },
 };
 </script>
@@ -27,8 +38,32 @@ export default {
   align-items: center;
 }
 .header__logo {
-  font-size: 1rem;
   text-decoration: none;
-  max-width: 25%;
+  max-width: 340px;
+}
+.header__menu-container {
+  display: flex;
+}
+@media screen and (max-width: 1023px) {
+  .header__menu-container {
+    display: none;
+  }
+}
+@media screen and (min-width: 768px) {
+  .header__logo {
+    font-size: 16px;
+    line-height: 18px;
+  }
+  .header {
+    margin: 18px 50px 18px 50px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .header__logo {
+    line-height: 20px;
+  }
+  .header {
+    margin: 18px 60px 18px 60px;
+  }
 }
 </style>

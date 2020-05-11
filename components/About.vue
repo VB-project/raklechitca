@@ -22,5 +22,34 @@
 <script>
 export default {};
 </script>
-
-<style scoped></style>
+.about__container{ }
+<style scoped>
+.about__container {
+  background-color: #f7f7f7;
+  display: flex;
+}
+.about__title {
+  font-weight: 600;
+}
+.about__description {
+  color: #666666;
+}
+@media screen and (min-width: 768px) {
+  .about__container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .about__title {
+    text-align: center;
+    font-size: 24px;
+    line-height: 28px;
+    margin-top: 80px;
+  }
+  .about__description {
+    font-size: 13px;
+    line-height: 16px;
+    margin-top: 26px;
+    width: 380px;
+  }
+}
+</style>
