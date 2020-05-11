@@ -3,10 +3,11 @@
     <main-header @btnClick="popupHandler" />
     <nuxt />
     <nxt-footer />
-    <!-- ВОТ ЗДЕСЬ НАЧИНАЕТСЯ НОВОЕ -->
+
     <overlay v-if="popupShown" @overlayClick="popupHandler"></overlay>
     <pop-up v-if="popupShown" @closeClick="popupHandler" :theme="'dark'">
-      <h1>Шаг 1 из 12</h1>
+      <nxt-questionForm />
+      <!-- <h1>Шаг 1 из 12</h1>
       <form @submit.prevent="submitQuestionForm" class="question-form">
         <nxt-textarea
           class="question-form__textarea"
@@ -22,7 +23,7 @@
           >
           <nxt-button type="submit" :theme="'purple'">Далее</nxt-button>
         </div>
-      </form>
+      </form> -->
     </pop-up>
   </div>
 </template>
@@ -31,37 +32,24 @@
 import Header from '@/components/Header';
 import Overlay from '@/components/ui/Overlay';
 import PopUp from '@/components/PopUp';
-import Button from '@/components/ui/Button';
-import Input from '@/components/ui/Input';
-import TextArea from '@/components/ui/TextArea';
 import Footer from '@/components/Footer';
+import QuestionForm from '@/components/QuestionForm';
 export default {
   components: {
     'main-header': Header,
     overlay: Overlay,
     'pop-up': PopUp,
-    'nxt-button': Button,
-    'nxt-input': Input,
-    'nxt-textarea': TextArea,
     'nxt-footer': Footer,
+    'nxt-questionForm': QuestionForm,
   },
   methods: {
     popupHandler() {
       this.popupShown = !this.popupShown;
     },
-    submitQuestionForm() {
-      console.log(
-        `name: ${this.name}, email: ${this.email}, message: ${this.message}`
-      );
-      this.popupHandler();
-    },
   },
   data() {
     return {
       popupShown: false,
-      name: '',
-      email: '',
-      message: '',
     };
   },
 };
