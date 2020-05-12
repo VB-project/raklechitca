@@ -29,9 +29,7 @@
         :option2="content[0].option2"
         :content="content[0].content"
       >
-        <nxt-button @btnClick="$emit('btnClick')" :theme="'purple'"
-          >Заполнить форму</nxt-button
-        >
+        <nxt-button :theme="'purple'">Заполнить форму</nxt-button>
       </nxt-textBlock>
     </about>
 

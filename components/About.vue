@@ -1,10 +1,7 @@
 <template>
   <div :class="['about__container', `about__container_${theme}`]">
     <nxt-title>Расскажите свою историю</nxt-title>
-
-    <!-- <nxt-textblock> -->
     <slot></slot>
-    <!-- </nxt-textblock> -->
   </div>
 </template>
 
@@ -18,7 +15,6 @@ export default {
     'nxt-textblock': Textblock,
   },
   props: ['theme'],
-  data() {},
 };
 </script>
 
