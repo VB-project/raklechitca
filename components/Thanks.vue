@@ -21,18 +21,15 @@ export default {
 
 <style scoped>
 .thanks__container {
-  height: 256px;
-  padding-top: 60px;
+  /* padding-top: 60px; */
   display: flex;
   flex-direction: row;
-  width: 90%;
-  margin-left: auto;
-  margin-right: auto;
   justify-content: space-between;
   align-items: stretch;
+  padding-bottom: 50px;
 }
 .thanks__title {
-  max-width: 23%;
+  max-width: 30%;
   font-size: 2rem;
 }
 </style>

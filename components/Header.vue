@@ -41,12 +41,12 @@ export default {
 .header__logo {
   font-size: 1rem;
   text-decoration: none;
-  max-width: 20%;
-  margin-left: 5%;
+  max-width: 25%;
+  margin-left: 60px;
 }
 .header__menu-container {
   display: flex;
   /* width: 28%; */
-  margin-right: 5%;
+  margin-right: 60px;
 }
 </style>

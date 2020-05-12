@@ -17,16 +17,17 @@ export default {
 .button {
   font-size: 16px;
   cursor: pointer;
-  padding: 10px;
   box-sizing: border-box;
   max-width: 100%;
+  flex: 0 0 auto;
+  border: none;
 }
 .button_theme_light {
   background-color: white;
   color: black;
-  border: none;
   padding: 0;
   font-size: 1.125rem;
+  margin-left: 20px;
 }
 .button_theme_light:hover {
   opacity: 0.9;
@@ -36,17 +37,25 @@ export default {
 .button_theme_purple {
   background-color: #613a93;
   color: white;
-  width: 226px;
+  width: 280px;
+  height: 52px;
+  /* margin-left: 30px; */
 }
 .button_theme_purple:hover {
   background-color: #613a93;
   color: white;
   opacity: 0.9;
 }
-@media screen and (max-width: 390px) {
-  .button {
-    font-size: 12px;
-    padding: 5px;
-  }
+
+.button_theme_width {
+  width: 100%;
+  height: 82px;
+  background-color: #fbfbfb;
+  margin-bottom: 30px;
+  margin-top: 60px;
+}
+
+.button_theme_width:hover {
+  background-color: #f8f8f8;
 }
 </style>

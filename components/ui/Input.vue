@@ -21,12 +21,15 @@ export default {
 .input input {
   display: block;
   width: 100%;
-  margin-top: 10px;
-  border: 1px solid black;
-  height: 40px;
+  border: 1px solid #e8e8e8;
+  height: 52px;
   padding: 5px;
   font-size: 14px;
   box-sizing: border-box;
   font-family: inherit;
+}
+
+.input {
+  flex: 1 1 auto;
 }
 </style>

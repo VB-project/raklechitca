@@ -29,9 +29,7 @@ export default {};
 .menu {
   list-style: none;
   padding-left: 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  align-items: center;
 }
 .menu__link {
   text-decoration: none;
