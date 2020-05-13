@@ -8,11 +8,7 @@
     </h1>
     <div class="header__menu-container">
       <main-menu />
-      <nxt-button
-        @btnClick="$emit('btnClick')"
-        class="menu__button"
-        :theme="'light'"
-      >
+      <nxt-button @btnClick="showPopUp" class="menu__button" :theme="'light'">
         Рассказать историю
       </nxt-button>
     </div>
@@ -27,6 +23,11 @@ export default {
   components: {
     'main-menu': Menu,
     'nxt-button': Button,
+  },
+  methods: {
+    showPopUp() {
+      this.$store.commit('popup/togglePopup');
+    },
   },
 };
 </script>

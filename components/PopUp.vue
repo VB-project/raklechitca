@@ -29,8 +29,8 @@ export default {
 }
 .close {
   position: absolute;
-  top: -30px;
-  right: -30px;
+  top: 44px;
+  right: 42px;
   width: 20px;
   height: 20px;
   background-size: contain;
