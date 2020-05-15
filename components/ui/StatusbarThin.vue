@@ -1,7 +1,7 @@
 <template>
   <div class="statusbar">
-    <div class="statusbar__blank" :style="`width: ${value}px`"></div>
-    <div class="statusbar__fill" :style="`width: ${newValue}px`"></div>
+    <div class="statusbar__initial" :style="initialStyle"></div>
+    <div class="statusbar__fill" :style="style"></div>
   </div>
 </template>
 
@@ -10,6 +10,14 @@ export default {
   props: {
     value: Number,
     newValue: Number,
+  },
+  computed: {
+    initialStyle() {
+      return `width: ${this.value * 0.615}%`;
+    },
+    style() {
+      return `width: ${(this.value + this.newValue) * 0.617}%`;
+    },
   },
 };
 </script>
@@ -31,7 +39,7 @@ export default {
   background: #613a93;
 }
 
-.statusbar__blank {
+.statusbar__initial {
   position: absolute;
   left: 0;
   top: 0;

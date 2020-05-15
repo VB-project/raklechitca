@@ -35,11 +35,4 @@ export default {
   height: 100%;
   background: #613a93;
 }
-
-.statusbar.statusbar_thin {
-  height: 20px;
-}
-
-.statusbar__fill_thin {
-}
 </style>

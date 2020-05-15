@@ -1,7 +1,7 @@
 <template>
   <div class="card" @click="$emit('cardClick')">
     <div class="card__image">
-      <img :src="url" alt="" width="300" height="300" />
+      <img class="card__image-item" :src="url" alt="" />
     </div>
     <div class="card__title">{{ title }}</div>
     <div class="card__text">{{ text }}</div>
@@ -10,7 +10,20 @@
 
 <script>
 export default {
-  props: ['url', 'title', 'text'],
+  props: {
+    url: {
+      type: String,
+      required: true,
+    },
+    title: {
+      type: String,
+      required: true,
+    },
+    text: {
+      type: String,
+      required: true,
+    },
+  },
 };
 </script>
 
@@ -21,8 +34,6 @@ export default {
   max-width: 300px;
 }
 .card__image {
-  width: 300px;
-  height: 300px;
   background-color: #ededed;
 }
 .card__title {
@@ -31,6 +42,11 @@ export default {
   font-weight: 600;
   font-size: 1.375rem;
   margin-top: 20px;
+}
+
+.card__image-item {
+  width: 300px;
+  height: 300px;
 }
 
 .card__text {

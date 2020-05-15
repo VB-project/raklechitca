@@ -3,14 +3,9 @@
     <main-header />
     <nuxt />
     <nxt-footer />
-
     <overlay v-if="popupShown" @overlayClick="showPopUp"></overlay>
-    <pop-up v-if="popupShown" @closeClick="showPopUp" :theme="'light'">
-      <nxt-questionForm
-        :key="questions[0].id"
-        :title="questions[0].title"
-        :question="questions[0].question"
-      ></nxt-questionForm>
+    <pop-up v-if="popupShown" @closeClick="showPopUp">
+      <nxt-questionForm></nxt-questionForm>
     </pop-up>
   </div>
 </template>
@@ -48,7 +43,7 @@ export default {
 
 <style>
 html {
-  font-family: Inter;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
@@ -65,22 +60,5 @@ html {
 }
 body {
   min-width: 320px;
-}
-a {
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
-}
-li {
-  line-height: 1.5;
-}
-/*  СТИЛИ ФОРМЫ */
-.question-form {
-  margin-top: 40px;
-}
-.question-form__button-container {
-  position: fixed;
-  bottom: 40px;
 }
 </style>

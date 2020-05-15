@@ -13,11 +13,10 @@
         <span class="textblock__option">{{ option2 }}</span>
       </div>
       <div class="textblock__content">
-        <p class="textblock__content-value">
+        <p class="textblock__content1">
           {{ content }}
-          <br />
-          <br />
-
+        </p>
+        <p class="textblock__content2">
           {{ content2 }}
         </p>
         <slot></slot>
@@ -28,7 +27,13 @@
 
 <script>
 export default {
-  props: ['description', 'option1', 'option2', 'content', 'content2'],
+  props: {
+    description: String,
+    option1: String,
+    option2: String,
+    content: String,
+    content2: String,
+  },
 };
 </script>
 
@@ -38,20 +43,16 @@ slot {
 }
 .textblock {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
 }
 .textblock__main-content {
   display: flex;
-  flex-direction: row;
 }
 .textblock__description {
   max-width: 340px;
 }
 .textblock__content {
   max-width: 640px;
-}
-.textblock__content-value {
   margin-bottom: 78px;
 }
 .textblock__option-container {
@@ -64,5 +65,8 @@ slot {
 }
 .textblock__option_active {
   font-weight: bold;
+}
+.textblock__content2 {
+  margin-top: 1.5rem;
 }
 </style>

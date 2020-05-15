@@ -1,18 +1,43 @@
 <template>
-  <label class="textarea">
-    {{ labelText }}
+  <div class="textarea">
     <textarea
       :placeholder="placeholder"
       :name="name"
       :required="required"
-      @input="$emit('input', $event.target.value)"
+      @input="handleInput"
+      v-model="content"
     ></textarea>
-  </label>
+  </div>
 </template>
 
 <script>
 export default {
-  props: ['labelText', 'placeholder', 'name', 'required'],
+  props: {
+    value: {
+      type: String,
+      default: '',
+    },
+    placeholder: String,
+    name: String,
+    required: String,
+  },
+  data() {
+    return {
+      content: this.value,
+    };
+  },
+  watch: {
+    value(newVal, oldVal) {
+      if (newVal !== this.content) {
+        this.content = newVal;
+      }
+    },
+  },
+  methods: {
+    handleInput(e) {
+      this.$emit('input', this.content);
+    },
+  },
 };
 </script>
 
@@ -35,5 +60,6 @@ export default {
   font-size: 1.125rem;
   font-weight: 500;
   color: #000;
+  margin-bottom: 200px;
 }
 </style>

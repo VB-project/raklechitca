@@ -14,7 +14,9 @@ export default {
     'nxt-title': Title,
     'nxt-textblock': Textblock,
   },
-  props: ['theme'],
+  props: {
+    theme: String,
+  },
 };
 </script>
 
@@ -28,10 +30,11 @@ export default {
   padding: 100px 60px;
 }
 
-.about__container.about__container_purple {
+.about__container_purple {
   background-color: #613a93;
   margin: 0;
   width: 100%;
-  padding: 70px 60px 100px 60px;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 </style>

@@ -13,7 +13,11 @@
 
 <script>
 export default {
-  props: ['qoute', 'title', 'source'],
+  props: {
+    qoute: String,
+    title: String,
+    source: String,
+  },
 };
 </script>
 
@@ -36,16 +40,19 @@ export default {
 
 .statcard__card-text {
   margin: 20px;
+  font-size: 0.75rem;
 }
 
 .statcard__count {
   width: 100%;
-  /* margin: 20px; */
   text-align: right;
   padding: 20px;
+  font-size: 2.375rem;
 }
 .statcard__source {
   margin: 20px;
   margin-top: 0;
+  color: #666666;
+  font-size: 0.75rem;
 }
 </style>

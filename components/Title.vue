@@ -1,12 +1,14 @@
 <template>
-  <h1 :class="['title', `title__theme_${theme}`]">
+  <h2 :class="['title', `title__theme_${theme}`]">
     <slot></slot>
-  </h1>
+  </h2>
 </template>
 
 <script>
 export default {
-  props: ['theme'],
+  props: {
+    theme: String,
+  },
 };
 </script>
 
@@ -17,6 +19,7 @@ export default {
   max-width: 420px;
   font-family: 'Inter';
   font-weight: 600;
+  line-height: 2.25rem;
 }
 
 .title__theme_underline {
@@ -30,7 +33,7 @@ export default {
 .title.title__theme_info {
   font-size: 4rem;
   padding-top: 90px;
-  margin-bottom: 0;
+  margin-bottom: 70px;
 }
 
 .title__theme_wide {

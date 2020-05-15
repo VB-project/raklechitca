@@ -27,7 +27,7 @@
         :title="'↑28%'"
         :source="'МНИОИ Герцена 2018'"
       >
-        <nxt-statusbar-thin :value="160" :newValue="208" />
+        <nxt-statusbar-thin :value="100" :newValue="28" />
       </nxt-statcard>
 
       <nxt-statcard
@@ -37,7 +37,7 @@
         :title="'↓25%'"
         :source="'МНИОИ Герцена 2018'"
       >
-        <nxt-statusbar-thin :value="190" :newValue="142" />
+        <nxt-statusbar-thin :value="100" :newValue="-25" />
       </nxt-statcard>
     </div>
   </div>

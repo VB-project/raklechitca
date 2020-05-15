@@ -85,6 +85,7 @@ export const state = () => ({
   ],
 
   usersApi: [],
+  currentUser: {},
 });
 
 export const mutations = {
@@ -94,11 +95,31 @@ export const mutations = {
 };
 
 export const actions = {
-  fetchUsersApi(state) {},
+  fetchUsersApi(state) {
+    return axios.get('https://api-test.pa7lux.ru/streams').then(response => {
+      return state.commit('setState', {
+        name: 'usersApi',
+        value: response.data,
+      });
+    });
+  },
+  fetchUsersApiWithID(state, payload) {
+    return axios
+      .get(`https://api-test.pa7lux.ru/streams/${payload.id}`)
+      .then(response => {
+        return state.commit('setState', {
+          name: 'currentUser',
+          value: response.data,
+        });
+      });
+  },
 };
 
 export const getters = {
   getUsers(state) {
     return state.users;
+  },
+  getCurrentUsers(state) {
+    return state.currentUser;
   },
 };

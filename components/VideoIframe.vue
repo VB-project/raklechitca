@@ -4,17 +4,38 @@
       :src="url"
       allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
       allowfullscreen
+      class="video-iframe-item"
     >
     </iframe>
     <a :href="link" class="video-iframe__link"
-      >{{ linlText }}<u>{{ linkTextUnderline }}</u></a
+      >{{ linlText
+      }}<span class="video-iframe__link_underline">{{
+        linkTextUnderline
+      }}</span></a
     >
   </div>
 </template>
 
 <script>
 export default {
-  props: ['url', 'link', 'linlText', 'linkTextUnderline'],
+  props: {
+    url: {
+      type: String,
+      required: true,
+    },
+    link: {
+      type: String,
+      required: true,
+    },
+    linlText: {
+      type: String,
+      required: true,
+    },
+    linkTextUnderline: {
+      type: String,
+      required: true,
+    },
+  },
 };
 </script>
 
@@ -25,14 +46,7 @@ export default {
   position: relative;
 }
 
-a {
-  color: #666666;
-  text-decoration: none;
-  position: absolute;
-  bottom: 0;
-}
-
-iframe {
+.video-iframe-item {
   border: 0;
   position: absolute;
   top: 0;
@@ -41,11 +55,14 @@ iframe {
   width: 100%;
   height: calc(100% - 30px);
 }
+.video-iframe__link {
+  position: absolute;
+  bottom: 0;
+  color: #666666;
+  text-decoration: none;
+}
 
-@media screen and (max-width: 768px) {
-  .video-iframe {
-    width: 100%;
-    padding-bottom: calc(9 * 100% / 16 + 30);
-  }
+.video-iframe__link_underline {
+  text-decoration: underline;
 }
 </style>

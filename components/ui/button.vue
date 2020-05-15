@@ -1,7 +1,12 @@
 <template>
   <button
-    :class="['button', `button_theme_${theme}`]"
+    :class="[
+      'button',
+      `button__theme-${theme}`,
+      { button__disabled: disabled },
+    ]"
     @click="$emit('btnClick')"
+    :disabled="disabled"
   >
     <slot>Some Button</slot>
   </button>
@@ -9,7 +14,12 @@
 
 <script>
 export default {
-  props: ['theme'],
+  props: {
+    theme: String,
+    type: String,
+    disabled: Boolean,
+    className: String,
+  },
 };
 </script>
 
@@ -22,32 +32,32 @@ export default {
   flex: 0 0 auto;
   border: none;
 }
-.button_theme_light {
+.button__theme-light {
   background-color: white;
-  color: black;
+  color: #c0c0c0;
   padding: 0;
   font-size: 1.125rem;
   margin-left: 20px;
 }
-.button_theme_light:hover {
+.button__theme-light:hover {
   opacity: 0.9;
   background-color: white;
   color: black;
 }
-.button_theme_purple {
+.button__theme-purple {
   background-color: #613a93;
   color: white;
   width: 280px;
   height: 52px;
   /* margin-left: 30px; */
 }
-.button_theme_purple:hover {
+.button__theme-purple:hover {
   background-color: #613a93;
   color: white;
   opacity: 0.9;
 }
 
-.button_theme_width {
+.button__theme-width {
   width: 100%;
   height: 82px;
   background-color: #fbfbfb;
@@ -55,7 +65,20 @@ export default {
   margin-top: 60px;
 }
 
-.button_theme_width:hover {
+.button__theme-width:hover {
   background-color: #f8f8f8;
+}
+
+.button__theme-input {
+  margin-left: 30px;
+  background-color: #613a93;
+  color: white;
+  width: 280px;
+  height: 52px;
+}
+
+.button__disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 </style>

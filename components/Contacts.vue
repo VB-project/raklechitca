@@ -2,12 +2,16 @@
   <div class="contacts__container">
     <span class="contacts__social">
       Мы в
-      <a href="https://www.instagram.com/raklechitsa/" class="contacts__link"
+      <a
+        href="https://www.instagram.com/raklechitsa/"
+        target="_blank"
+        class="contacts__link"
         >Инстаграмме</a
       >
       и
       <a
         href="https://www.youtube.com/results?search_query=%23%D1%8D%D1%82%D0%BE%D0%BD%D0%B5%D0%BB%D0%B5%D1%87%D0%B8%D1%82%D1%81%D1%8F"
+        target="_blank"
         class="contacts__link"
         >Youtube</a
       >
@@ -31,7 +35,7 @@ export default {};
 }
 .contacts__link {
   text-decoration: none;
-  color: #000000;
+  color: #000;
 }
 .contacts__link:hover {
   opacity: 0.8;

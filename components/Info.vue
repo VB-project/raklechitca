@@ -1,7 +1,7 @@
 <template>
   <div :class="`info__container info__container_${theme}`">
     <slot>
-      <h1 class="info__title_tall">#РАКЛЕЧИТСЯ</h1>
+      <h1 class="info__title">#РАКЛЕЧИТСЯ</h1>
     </slot>
   </div>
 </template>
@@ -13,7 +13,9 @@ export default {
   components: {
     panel: Panel,
   },
-  props: ['theme'],
+  props: {
+    theme: String,
+  },
 };
 </script>
 
@@ -23,14 +25,14 @@ export default {
   flex-direction: column;
   justify-content: center;
   background-color: #613a93;
-  color: #ffffff;
+  color: #fff;
   align-items: center;
   justify-content: center;
   margin-bottom: 100px;
 }
 
 .info__container_fixed {
-  height: 689px;
+  min-height: calc(100vh - 76px);
   margin-left: -60px;
   margin-right: -60px;
 }
@@ -38,6 +40,7 @@ export default {
 .info__container_tall {
   margin-left: -60px;
   margin-right: -60px;
+  margin-bottom: 0;
 }
 
 .info__container_thin {
@@ -48,12 +51,6 @@ export default {
 }
 
 .info__title {
-  width: 100%;
-  font-size: 1.875rem;
-  text-align: center;
-}
-
-.info__title_tall {
   width: 100%;
   font-size: 5.75rem;
   text-align: center;

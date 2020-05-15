@@ -3,8 +3,9 @@
     <info :theme="'fixed'" />
     <story />
     <info :theme="'thin'">
-      <nxt-title :theme="'wide'"
-        >И В ОТЛИЧИЕ ОТ РАКА, <b>#ЭТОНЕЛЕЧИТСЯ</b></nxt-title
+      <nxt-title :theme="'wide'" class="index__title"
+        >И В ОТЛИЧИЕ ОТ РАКА,
+        <span class="index__title-span">#ЭТОНЕЛЕЧИТСЯ</span></nxt-title
       >
     </info>
     <habits>
@@ -23,7 +24,8 @@
     </habits>
     <info :theme="'thin'">
       <nxt-title :theme="'wide'"
-        >РАССКАЗЫВАЙТЕ ВАШИ ИСТОРИИ В ИНСТАГРАМ <b>#ЭТОНЕЛЕЧИТСЯ</b></nxt-title
+        >РАССКАЗЫВАЙТЕ ВАШИ ИСТОРИИ В ИНСТАГРАМ
+        <span class="index__title-span">#ЭТОНЕЛЕЧИТСЯ</span></nxt-title
       >
     </info>
     <instagram />
@@ -55,8 +57,6 @@
         ></nxt-textBlock>
       </about>
     </info>
-
-    <thanks />
   </div>
 </template>
 
@@ -68,7 +68,6 @@ import Habits from '@/components/Habits';
 import Instagram from '@/components/Instagram';
 import About from '@/components/About';
 import Card from '@/components/Card';
-import Thanks from '@/components/Thanks';
 import Statistics from '@/components/Statistics';
 import Button from '@/components/ui/Button';
 import TextBlock from '@/components/TextBlock';
@@ -80,7 +79,6 @@ export default {
     info: Info,
     story: Story,
     card: Card,
-    thanks: Thanks,
     habits: Habits,
     instagram: Instagram,
     about: About,
@@ -105,12 +103,19 @@ export default {
       return this.$store.getters['content/getContent'];
     },
   },
+
+  // async fetch({store}) {
+  //   await store.dispatch('users/fetchUsersApi');
+  // }
 };
 </script>
 
 <style>
 .container {
   margin: 0px 60px 0px 60px;
+}
+.index__title-span {
+  font-weight: bold;
 }
 input {
   display: block;

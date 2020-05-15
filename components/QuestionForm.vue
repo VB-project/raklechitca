@@ -1,22 +1,37 @@
 <template>
-  <div>
-    <h1>{{ title }}</h1>
-    <form @submit.prevent="submitQuestionForm" class="question-form">
-      <nxt-textarea
-        class="question-form__textarea"
-        :placeholder="placeholder"
-        :labelText="question"
-        :message="'message'"
-        :required="'required'"
-        v-model="message"
-      />
-      <div class="question-form__button-container">
-        <nxt-button class="button" type="submit" :theme="'light'"
-          >Назад</nxt-button
-        >
-        <nxt-button type="submit" :theme="'purple'">Далее</nxt-button>
-      </div>
-    </form>
+  <div class="question-form">
+    <h2 class="question-form__title">{{ currentQuestion.title }}</h2>
+    <p class="question-form__question">
+      <span class="question-form__question-main">{{
+        currentQuestion.question
+      }}</span>
+      <span
+        v-if="currentQuestion.description"
+        class="question-form__question-description"
+        >{{ currentQuestion.description }}</span
+      >
+    </p>
+    <nxt-textarea
+      class="question-form__textarea"
+      :placeholder="placeholder"
+      :required="'required'"
+      v-model="answer"
+    />
+    <div class="question-form__button-container">
+      <nxt-button
+        class="button"
+        :theme="'light'"
+        :disabled="this.$store.state.quiz.currentQuestion === 1"
+        @btnClick="prevQuestion"
+        >Назад</nxt-button
+      >
+      <nxt-button
+        :theme="'input'"
+        :disabled="answer === ''"
+        @btnClick="nextQuestion"
+        >Далее</nxt-button
+      >
+    </div>
   </div>
 </template>
 
@@ -28,9 +43,33 @@ export default {
     'nxt-button': Button,
     'nxt-textarea': TextArea,
   },
+  data() {
+    return {
+      answer: '',
+    };
+  },
+  computed: {
+    currentQuestion() {
+      const { quiz } = this.$store.state;
+      const { currentQuestion, questions } = quiz;
+      return questions[currentQuestion];
+    },
+    initialAnswer() {
+      const { quiz } = this.$store.state;
+      const { currentQuestion, answers } = quiz;
+      return answers[currentQuestion];
+    },
+  },
   methods: {
-    submitQuestionForm() {
-      console.log(`message: ${this.message}`);
+    async prevQuestion() {
+      await this.$store.dispatch('quiz/PREV_QUESTION');
+      this.answer = this.initialAnswer || '';
+    },
+    async nextQuestion() {
+      await this.$store.dispatch('quiz/NEXT_QUESTION', {
+        answer: this.answer,
+      });
+      this.answer = this.initialAnswer || '';
     },
   },
   props: {
@@ -42,17 +81,22 @@ export default {
       default: 'Напишите тут',
     },
   },
-  data() {
-    return {
-      message: '',
-    };
-  },
 };
 </script>
 
 <style scoped>
+.question-form__title {
+  font-size: 2rem;
+}
+
+.question-form__question {
+  margin-top: 40px;
+  font-weight: 500;
+  font-size: 1.125rem;
+}
+
 .question-form__button-container {
-  width: calc(36% + 30px);
+  width: 36%;
   display: flex;
   justify-content: space-between;
 }

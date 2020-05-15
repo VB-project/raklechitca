@@ -1,24 +1,29 @@
 <template>
-  <label class="input">
-    {{ labelText }}
+  <div class="input">
     <input
+      class="input__item"
       :type="type"
       :placeholder="placeholder"
       :name="name"
       :required="required"
       @input="$emit('input', $event.target.value)"
     />
-  </label>
+  </div>
 </template>
 
 <script>
 export default {
-  props: ['labelText', 'type', 'placeholder', 'name', 'required'],
+  props: {
+    type: String,
+    name: String,
+    required: String,
+    placeholder: String,
+  },
 };
 </script>
 
 <style scoped>
-.input input {
+.input .input__item {
   display: block;
   width: 100%;
   border: 1px solid #e8e8e8;
