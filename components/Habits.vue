@@ -4,7 +4,9 @@
     <div class="habits__grid">
       <slot></slot>
     </div>
-    <nxt-button :theme="'width'">Больше статей</nxt-button>
+    <nxt-button @btnClick="goToStories" :theme="'width'"
+      >Больше статей</nxt-button
+    >
   </div>
 </template>
 
@@ -15,6 +17,11 @@ export default {
   components: {
     'nxt-title': Title,
     'nxt-button': Button,
+  },
+  methods: {
+    goToStories() {
+      this.$router.push('/stories/');
+    },
   },
 };
 </script>

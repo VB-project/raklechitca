@@ -4,7 +4,7 @@
       <h2 class="footer__thanks-title">
         Спасибо всем, кто помог состояться этому проекту
       </h2>
-      <main-menu />
+      <main-menu :hide="true" />
       <contacts />
     </div>
     <div class="footer__copyright">

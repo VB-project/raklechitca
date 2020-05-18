@@ -44,6 +44,7 @@ export default {
 
 <style scoped>
 .menu {
+  background-color: red;
   list-style: none;
   padding-left: 0;
   align-items: center;

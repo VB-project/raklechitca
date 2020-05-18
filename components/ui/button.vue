@@ -1,5 +1,6 @@
 <template>
   <button
+    v-if="!hide"
     :class="[
       'button',
       `button__theme-${theme}`,
@@ -7,6 +8,7 @@
     ]"
     @click="$emit('btnClick')"
     :disabled="disabled"
+    :show="true"
   >
     <slot>Some Button</slot>
   </button>
@@ -19,6 +21,7 @@ export default {
     type: String,
     disabled: Boolean,
     className: String,
+    hide: Boolean,
   },
 };
 </script>
@@ -34,7 +37,7 @@ export default {
 }
 .button__theme-light {
   background-color: white;
-  color: #c0c0c0;
+  color: #121212;
   padding: 0;
   font-size: 1.125rem;
   margin-left: 20px;
@@ -75,6 +78,11 @@ export default {
   color: white;
   width: 280px;
   height: 52px;
+}
+
+.button__theme-share {
+  background-color: #fff;
+  font-size: 1.125rem;
 }
 
 .button__disabled {

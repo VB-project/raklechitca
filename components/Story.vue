@@ -1,19 +1,15 @@
 <template>
   <div class="story__container">
     <div class="story__card">
-      <div class="story card-container">
+      <div class="story__card-container">
         <nxt-title
           >Истории людей, победивших рак, но не свои привычки</nxt-title
         >
         <p class="story__text">
-          Есть вещи, которые не лечатся. Вещи ставшие частью нашего «я», фобии,
-          страхи. Но это точно не рак. Рак лечится. Лучшее доказательство — люди
-          с их историями.
+          <carousel :itemArray="users"></carousel>
         </p>
-        <span class="sotry__pagination">< ></span>
       </div>
     </div>
-
     <nxt-videoIframe
       :url="'https://www.youtube.com/embed/coOppM34GtI'"
       :link="
@@ -28,10 +24,17 @@
 <script>
 import VideoIframe from '@/components/VideoIframe';
 import Title from '@/components/Title';
+import Slider from '@/components/Slider';
+import Carousel from '@/components/Carousel';
 export default {
   components: {
     'nxt-videoIframe': VideoIframe,
     'nxt-title': Title,
+    slider: Slider,
+    carousel: Carousel,
+  },
+  props: {
+    users: {},
   },
 };
 </script>
@@ -41,23 +44,24 @@ export default {
   display: flex;
   justify-content: space-between;
   width: 100%;
+  height: 100%;
 }
 .story__card {
   max-width: 413px;
 }
+.story__card-container {
+  height: 100%;
+}
 .story__text {
+  display: flex;
+  height: 70%;
   max-width: 340px;
   color: #666666;
-  padding-bottom: 150px;
 }
 .videoIframe-container {
   width: 100%;
   height: 100%;
   position: relative;
   right: 0px;
-
-  /* width: 100%; */
-  /* padding-bottom: calc(9 * 60% / 16); */
-  /* position: relative; */
 }
 </style>

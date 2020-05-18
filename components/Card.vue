@@ -3,8 +3,8 @@
     <div class="card__image">
       <img class="card__image-item" :src="url" alt="" />
     </div>
-    <div class="card__title">{{ title }}</div>
-    <div class="card__text">{{ text }}</div>
+    <h2 class="card__title">{{ title }}</h2>
+    <p class="card__text">{{ text }}</p>
   </div>
 </template>
 
@@ -31,10 +31,12 @@ export default {
 .card {
   display: flex;
   flex-direction: column;
-  max-width: 300px;
 }
 .card__image {
   background-color: #ededed;
+  width: 100%;
+  padding-bottom: 100%;
+  position: relative;
 }
 .card__title {
   font-family: Inter;
@@ -45,8 +47,16 @@ export default {
 }
 
 .card__image-item {
-  width: 300px;
-  height: 300px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.card__image-item:after {
+  content: '';
+  display: block;
+  padding-bottom: 100%;
 }
 
 .card__text {

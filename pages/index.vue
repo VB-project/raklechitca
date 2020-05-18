@@ -1,7 +1,8 @@
 <template>
   <div class="container">
     <info :theme="'fixed'" />
-    <story />
+
+    <!-- <story :users="users" /> -->
     <info :theme="'thin'">
       <nxt-title :theme="'wide'" class="index__title"
         >И В ОТЛИЧИЕ ОТ РАКА,
@@ -112,11 +113,13 @@ export default {
 
 <style>
 .container {
-  margin: 0px 60px 0px 60px;
+  padding: 0px 60px;
 }
+
 .index__title-span {
   font-weight: bold;
 }
+
 input {
   display: block;
 }

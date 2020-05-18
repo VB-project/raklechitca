@@ -8,7 +8,7 @@ export const state = () => ({
       image:
         'https://static.tildacdn.com/tild6236-3462-4634-a362-653061313562/IMG_20191024_184116.jpg',
       description:
-        'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
+        '111Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
     },
     {
       id: '2',
@@ -16,7 +16,7 @@ export const state = () => ({
       image:
         'https://static.tildacdn.com/tild6236-3462-4634-a362-653061313562/IMG_20191024_184116.jpg',
       description:
-        'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
+        '222Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
     },
     {
       id: '3',
@@ -24,7 +24,7 @@ export const state = () => ({
       image:
         'https://static.tildacdn.com/tild6236-3462-4634-a362-653061313562/IMG_20191024_184116.jpg',
       description:
-        'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
+        '333Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
     },
     {
       id: '4',
@@ -82,10 +82,104 @@ export const state = () => ({
       description:
         'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
     },
+    {
+      id: '11',
+      name: 'Владимир Тен',
+      image:
+        'https://static.tildacdn.com/tild6236-3462-4634-a362-653061313562/IMG_20191024_184116.jpg',
+      description:
+        'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
+    },
+    {
+      id: '12',
+      name: 'Владимир Тен',
+      image:
+        'https://static.tildacdn.com/tild6236-3462-4634-a362-653061313562/IMG_20191024_184116.jpg',
+      description:
+        'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
+    },
+    {
+      id: '13',
+      name: 'Владимир Тен',
+      image:
+        'https://static.tildacdn.com/tild6236-3462-4634-a362-653061313562/IMG_20191024_184116.jpg',
+      description:
+        'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
+    },
+    {
+      id: '14',
+      name: 'Владимир Тен',
+      image:
+        'https://static.tildacdn.com/tild6236-3462-4634-a362-653061313562/IMG_20191024_184116.jpg',
+      description:
+        'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
+    },
+    {
+      id: '15',
+      name: 'Владимир Тен',
+      image:
+        'https://static.tildacdn.com/tild6236-3462-4634-a362-653061313562/IMG_20191024_184116.jpg',
+      description:
+        'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
+    },
+    {
+      id: '16',
+      name: 'Владимир Тен',
+      image:
+        'https://static.tildacdn.com/tild6236-3462-4634-a362-653061313562/IMG_20191024_184116.jpg',
+      description:
+        'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
+    },
+    {
+      id: '17',
+      name: 'Владимир Тен',
+      image:
+        'https://static.tildacdn.com/tild6236-3462-4634-a362-653061313562/IMG_20191024_184116.jpg',
+      description:
+        'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
+    },
+    {
+      id: '18',
+      name: 'Владимир Тен',
+      image:
+        'https://static.tildacdn.com/tild6236-3462-4634-a362-653061313562/IMG_20191024_184116.jpg',
+      description:
+        'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
+    },
+    {
+      id: '19',
+      name: 'Владимир Тен',
+      image:
+        'https://static.tildacdn.com/tild6236-3462-4634-a362-653061313562/IMG_20191024_184116.jpg',
+      description:
+        'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
+    },
+    {
+      id: '20',
+      name: 'Владимир Тен',
+      image:
+        'https://static.tildacdn.com/tild6236-3462-4634-a362-653061313562/IMG_20191024_184116.jpg',
+      description:
+        'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
+    },
+    {
+      id: '21',
+      name: 'Владимир Тен',
+      image:
+        'https://static.tildacdn.com/tild6236-3462-4634-a362-653061313562/IMG_20191024_184116.jpg',
+      description: 'last рака.',
+    },
   ],
 
   usersApi: [],
-  currentUser: {},
+  currentUser: {
+    id: '20',
+    name: 'Владимир Тен',
+    image:
+      'https://static.tildacdn.com/tild6236-3462-4634-a362-653061313562/IMG_20191024_184116.jpg',
+    description:
+      'Я всегда читаю книги с конца, - и это не лечится, в отличие от рака.',
+  },
 });
 
 export const mutations = {
@@ -96,7 +190,7 @@ export const mutations = {
 
 export const actions = {
   fetchUsersApi(state) {
-    return axios.get('https://api-test.pa7lux.ru/streams').then(response => {
+    return axios.get('https://api-test.pa7lux.ru/streams/').then(response => {
       return state.commit('setState', {
         name: 'usersApi',
         value: response.data,

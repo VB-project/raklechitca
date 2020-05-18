@@ -1,5 +1,10 @@
 <template>
-  <div>
+  <div class="layout__container">
+    <mobile-menu
+      v-if="isMobileMenuOpened"
+      class="mobile-menu"
+      @btnClick="showPopUp"
+    />
     <main-header />
     <nuxt />
     <nxt-footer />
@@ -16,6 +21,8 @@ import Overlay from '@/components/ui/Overlay';
 import PopUp from '@/components/PopUp';
 import Footer from '@/components/Footer';
 import QuestionForm from '@/components/QuestionForm';
+import MobileMenu from '@/components/MobileMenu';
+
 export default {
   components: {
     'main-header': Header,
@@ -23,6 +30,7 @@ export default {
     'pop-up': PopUp,
     'nxt-footer': Footer,
     'nxt-questionForm': QuestionForm,
+    'mobile-menu': MobileMenu,
   },
 
   computed: {
@@ -31,6 +39,9 @@ export default {
     },
     questions() {
       return this.$store.getters['questions/getQuestion'];
+    },
+    isMobileMenuOpened() {
+      return this.$store.getters['mobile-menu/getMobileMenuState'];
     },
   },
   methods: {
@@ -42,7 +53,7 @@ export default {
 </script>
 
 <style>
-html {
+.layout__container {
   font-family: 'Inter', Arial, Helvetica, sans-serif;
   font-size: 16px;
   word-spacing: 1px;
@@ -51,14 +62,35 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+  max-width: 1600px;
+  min-width: 320px;
+  /* padding: 0px 60px 0px 60px; */
 }
+/* html {
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  word-spacing: 1px;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+} */
 *,
 *:before,
 *:after {
   box-sizing: border-box;
   margin: 0;
 }
-body {
+/* body {
   min-width: 320px;
+} */
+.mobile-menu {
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  .mobile-menu {
+    display: flex;
+  }
 }
 </style>
