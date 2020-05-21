@@ -8,8 +8,12 @@
       </div>
     </div>
     <div class="carousel__navigation">
-      <nxt-button @btnClick="prevSlide">&lt;</nxt-button>
-      <nxt-button @btnClick="nextSlide">&gt;</nxt-button>
+      <nxt-button class="carousel__navigation-prev" @btnClick="prevSlide"
+        >&lt;</nxt-button
+      >
+      <nxt-button class="carousel__navigation-next" @btnClick="nextSlide"
+        >&gt;</nxt-button
+      >
     </div>
   </div>
 </template>
@@ -55,5 +59,22 @@ export default {
   justify-content: space-between;
   height: 100%;
   width: 100%;
+  position: relative;
+}
+@media screen and (max-width: 768px) {
+  .carousel__navigation-prev {
+    position: absolute;
+    top: 130px;
+    left: -50px;
+  }
+  .carousel__navigation-next {
+    position: absolute;
+    top: 130px;
+    right: -125px;
+  }
+  .carousel__item {
+    margin-bottom: 60px;
+    align-self: center;
+  }
 }
 </style>

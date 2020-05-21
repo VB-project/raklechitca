@@ -3,7 +3,9 @@
     <nxt-title>Истории неизлечимых привычек</nxt-title>
     <form class="stories-page__search-container">
       <nxt-input />
-      <nxt-button theme="purple">Поиск</nxt-button>
+      <nxt-button class="stories-page__search-btn" theme="purple"
+        >Поиск</nxt-button
+      >
     </form>
     <div class="stories-page__cards">
       <panel v-for="user in users" :key="user.id" class="stories-page__panel">
@@ -20,6 +22,7 @@
       :ItemsPerPage="itemsPerPage"
       @onPageChanged="changeStartIndex"
     />
+    <nxt-footer />
   </div>
 </template>
 
@@ -30,6 +33,8 @@ import Button from '@/components/ui/Button';
 import Panel from '@/components/Panel';
 import Card from '@/components/Card';
 import Pagination from '@/components/ui/Pagination';
+import Footer from '@/components/Footer';
+
 export default {
   components: {
     'nxt-title': Title,
@@ -38,6 +43,7 @@ export default {
     panel: Panel,
     card: Card,
     'nxt-pagination': Pagination,
+    'nxt-footer': Footer,
   },
   beforeMount() {
     this.$store.dispatch('users/fetchUsersApi');
@@ -82,5 +88,18 @@ export default {
   row-gap: 60px;
   margin-top: 70px;
   margin-bottom: 40px;
+}
+
+@media screen and (max-width: 768px) {
+  .stories-page {
+    margin: 80px 40px 0px 40px;
+  }
+  .stories-page__search-container {
+    margin-top: 20px;
+  }
+  .stories-page__search-btn {
+    max-width: 208px;
+    margin-left: 20px;
+  }
 }
 </style>

@@ -44,16 +44,21 @@ export default {
 
 <style scoped>
 .menu {
-  background-color: red;
   list-style: none;
   padding-left: 0;
   align-items: center;
+  height: 50px;
+  padding-left: 50px;
 }
 .menu__link {
   text-decoration: none;
   font-size: 1.125rem;
   color: #000;
   margin: 0 20px;
+}
+
+.menu__link:first-child {
+  margin-left: 0;
 }
 .menu__link:hover {
   opacity: 0.8;

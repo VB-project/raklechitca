@@ -24,8 +24,8 @@ export default {
   height: 40px;
   background: #f4f4f4;
   position: relative;
-  margin-right: 20px;
-  margin-left: 20px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .statusbar__fill {
@@ -34,5 +34,26 @@ export default {
   top: 0;
   height: 100%;
   background: #613a93;
+}
+
+@media screen and (max-width: 1280px) {
+  .statusbar {
+    width: 229px;
+    height: 35px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .statusbar {
+    width: 188px;
+    height: 28px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .statusbar {
+    width: 196px;
+    height: 28px;
+  }
 }
 </style>

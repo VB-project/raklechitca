@@ -55,4 +55,32 @@ export default {
   font-size: 5.75rem;
   text-align: center;
 }
+
+@media screen and (max-width: 1280px) {
+  .info__container_fixed {
+    margin-left: -50px;
+    margin-right: -50px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .info__container_fixed {
+      margin-left: -40px;
+      margin-right: -40px;
+      margin-bottom: 80px;
+    }
+  }
+
+  .info__container_tall {
+    margin-left: -40px;
+    margin-right: -40px;
+  }
+  @media screen and (max-width: 768px) {
+    .info__container_thin {
+      margin-top: 44px;
+    }
+    .info__container {
+      margin-bottom: 80px;
+    }
+  }
+}
 </style>

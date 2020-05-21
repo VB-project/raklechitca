@@ -1,12 +1,25 @@
 <template>
   <div class="card-page">
-    <div class="card-page__descripton">
+    <div v-if="mobile" class="card-page__mobile">
+      <div class="card-page__main">
+        <span class="card-page__title">{{ currentUser.name }}:</span>
+        <span class="card-page__qoute">«{{ currentUser.description }}»</span>
+      </div>
+      <img :src="currentUser.image" class="card-page__image" />
+
+      <div class="card-page__share">
+        <nxt-button :theme="'share'">Поделитесь &#8599;</nxt-button>
+        <span class="card-page__date">20 апреля 2018</span>
+      </div>
+    </div>
+
+    <div v-else class="card-page__descripton">
       <div class="card-page__image-wrapper">
         <img :src="currentUser.image" class="card-page__image" />
       </div>
       <div class="card-page__about">
         <div class="card-page__main">
-          <span class="card-page__title">{{ currentUser.name }}: </span>
+          <span class="card-page__title">{{ currentUser.name }}:</span>
           <span class="card-page__qoute">«{{ currentUser.description }}»</span>
         </div>
         <div class="card-page__share">
@@ -15,6 +28,7 @@
         </div>
       </div>
     </div>
+
     <p class="card-page__text">
       Я из военной семьи. Отец хоть и не был военным сам, но нас всех держал в
       ежовых рукавицах. Думаю, поэтому мы и выросли такими ответственными. У
@@ -68,6 +82,7 @@
     <!-- :url="this.$store.state.users.users[0].image"
       :title="this.$store.state.users.users[0].name"
     :text="this.$store.state.users.users[0].description"-->
+    <nxt-footer />
   </div>
 </template>
 
@@ -75,15 +90,23 @@
 import Panel from '@/components/Panel';
 import Card from '@/components/Card';
 import Button from '@/components/ui/Button';
+import Footer from '@/components/Footer';
+
 export default {
   components: {
     panel: Panel,
     card: Card,
     'nxt-button': Button,
+    'nxt-footer': Footer,
   },
   // async fetch({ store, route }) {
   //   await store.dispatch('users/fetchUsersApiWithID', { id: route.params.id });
   // },
+  data() {
+    return {
+      mobile: false,
+    };
+  },
   computed: {
     currentUser() {
       return this.$store.getters['users/getCurrentUsers'];
@@ -96,6 +119,16 @@ export default {
     goToStories() {
       this.$router.push('/stories/');
     },
+    onResize() {
+      this.mobile = document.documentElement.clientWidth > 768 ? false : true;
+    },
+  },
+  created() {
+    window.addEventListener('resize', this.onResize);
+    this.onResize();
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.onResize);
   },
 };
 </script>
@@ -125,6 +158,8 @@ export default {
 .card-page__image {
   width: 580px;
   height: 580px;
+  object-fit: cover;
+
   /* width: 100%;
   height: 100%;
   position: absolute;
@@ -172,5 +207,37 @@ export default {
   grid-template-columns: repeat(4, auto);
   column-gap: 40px;
   margin-top: 160px;
+}
+
+@media screen and (max-width: 768px) {
+  .card-page {
+    margin: 100px 64px;
+  }
+
+  .card-page__mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .card-page__descripton {
+    flex-direction: column;
+  }
+  .card-page__image {
+    width: 420px;
+    height: 420px;
+    margin-bottom: 60px;
+  }
+  .card-page__main {
+    font-size: 30px;
+    margin-bottom: 60px;
+  }
+
+  .card-page__container {
+    margin-top: 120px;
+  }
+  .footer__container {
+    padding-bottom: 0;
+    margin-top: 70px;
+  }
 }
 </style>

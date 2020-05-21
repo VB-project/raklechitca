@@ -7,10 +7,7 @@
       Проект Благотворительного Фонда Константина Хабенского
     </h1>
     <mobile-icon class="header__mobile-icon" />
-
-    <div class="header__menu-container">
-      <main-menu class="header__main-menu" @btnClick="showPopUp" />
-    </div>
+    <main-menu class="header__main-menu" @btnClick="showPopUp" />
   </header>
 </template>
 
@@ -39,30 +36,44 @@ export default {
   justify-content: space-between;
   align-items: center;
   height: 76px;
+  padding: 0 60px;
 }
 .header__logo {
   font-size: 1rem;
   text-decoration: none;
-  max-width: 25%;
-  margin-left: 60px;
+  max-width: 30%;
   color: #000;
   font-weight: bold;
 }
-.header__menu-container {
-  display: flex;
-  /* width: 28%; */
-  margin-right: 60px;
-}
+
 .header__mobile-icon {
   display: none;
 }
 
+@media screen and (max-width: 1280px) {
+  .header {
+    padding: 0 50px;
+  }
+}
+
 @media screen and (max-width: 768px) {
+  .header__logo {
+    max-width: 45%;
+  }
   .header__main-menu {
     display: none;
   }
   .header__mobile-icon {
     display: block;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .header {
+    padding: 0 15px;
+  }
+  .header__logo {
+    max-width: 80%;
   }
 }
 </style>

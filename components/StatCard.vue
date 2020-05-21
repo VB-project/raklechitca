@@ -1,12 +1,14 @@
 <template>
   <div class="statcard__card">
-    <p class="statcard__card-text">
-      {{ qoute }}
-    </p>
-    <div class="statcard__info-container">
-      <slot></slot>
-      <h2 class="statcard__count">{{ title }}</h2>
-      <span class="statcard__source">{{ source }}</span>
+    <div class="statcard__wrapper">
+      <p class="statcard__card-text">
+        {{ qoute }}
+      </p>
+      <div class="statcard__info-container">
+        <slot></slot>
+        <h2 class="statcard__count">{{ title }}</h2>
+        <span class="statcard__source">{{ source }}</span>
+      </div>
     </div>
   </div>
 </template>
@@ -23,13 +25,32 @@ export default {
 
 <style scoped>
 .statcard__card {
-  display: flex;
-  flex-direction: column;
-  width: 300px;
-  height: 300px;
+  position: relative;
+  /* display: block; */
+
+  /* display: flex;
+  flex-direction: column; */
+
   border: 1px solid #efefef;
   box-sizing: border-box;
+  /* justify-content: space-between; */
+}
+
+.statcard__wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #efefef;
+  display: flex;
+  flex-direction: column;
   justify-content: space-between;
+}
+.statcard__card:after {
+  content: '';
+  display: block;
+  padding-top: 100%;
 }
 
 .statcard__info-container {
@@ -54,5 +75,11 @@ export default {
   margin-top: 0;
   color: #666666;
   font-size: 0.75rem;
+}
+
+@media screen and (max-width: 768px) {
+  .statcard__count {
+    font-size: 26px;
+  }
 }
 </style>

@@ -2,7 +2,7 @@
   <div class="container">
     <info :theme="'fixed'" />
 
-    <!-- <story :users="users" /> -->
+    <story :users="users" />
     <info :theme="'thin'">
       <nxt-title :theme="'wide'" class="index__title"
         >И В ОТЛИЧИЕ ОТ РАКА,
@@ -29,35 +29,26 @@
         <span class="index__title-span">#ЭТОНЕЛЕЧИТСЯ</span></nxt-title
       >
     </info>
-    <instagram />
-    <about>
-      <nxt-textBlock
-        :description="content[0].description"
-        :option1="content[0].option1"
-        :option2="content[0].option2"
-        :content="content[0].content"
+    <instagram>
+      <panel
+        v-for="user in users.slice(0, 8)"
+        :key="user.id"
+        class="container__panel"
       >
-        <nxt-button :theme="'purple'" @btnClick="showPopUp"
-          >Заполнить форму</nxt-button
-        >
-      </nxt-textBlock>
-    </about>
+        <card :url="user.image" />
+      </panel>
+    </instagram>
+    <about> </about>
 
     <statistics />
     <info :theme="'tall'">
       <nxt-title :theme="'info'">
         #РАКЛЕЧИТСЯ
       </nxt-title>
-      <about :theme="'purple'">
-        <nxt-textBlock
-          :description="content[1].description"
-          :option1="content[1].option1"
-          :option2="content[1].option2"
-          :content="content[1].content"
-          :content2="content[1].content2"
-        ></nxt-textBlock>
-      </about>
+
+      <tellStory />
     </info>
+    <nxt-footer />
   </div>
 </template>
 
@@ -71,8 +62,9 @@ import About from '@/components/About';
 import Card from '@/components/Card';
 import Statistics from '@/components/Statistics';
 import Button from '@/components/ui/Button';
-import TextBlock from '@/components/TextBlock';
+import TellStory from '@/components/TellStory';
 import Title from '@/components/Title';
+import Footer from '@/components/Footer';
 
 export default {
   components: {
@@ -84,9 +76,10 @@ export default {
     instagram: Instagram,
     about: About,
     statistics: Statistics,
-    'nxt-textBlock': TextBlock,
+    tellStory: TellStory,
     'nxt-button': Button,
     'nxt-title': Title,
+    'nxt-footer': Footer,
   },
   methods: {
     goToDetail(id) {
@@ -122,5 +115,23 @@ export default {
 
 input {
   display: block;
+}
+
+@media screen and (max-width: 1280px) {
+  .container {
+    padding: 0px 50px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 0px 40px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .container {
+    padding: 0px 15px;
+  }
 }
 </style>

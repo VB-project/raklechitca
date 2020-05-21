@@ -72,4 +72,18 @@ export default {
   margin-top: 40px;
   margin-bottom: 30px;
 }
+
+@media screen and (max-width: 768px) {
+  .statistics__container {
+    margin-top: 80px;
+    margin-bottom: 80px;
+  }
+  .statistic__grid {
+    overflow: scroll;
+    grid-template-columns: repeat(4, 216px);
+    column-gap: 30px;
+    margin-top: 30px;
+    margin-bottom: 0;
+  }
+}
 </style>

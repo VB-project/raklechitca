@@ -34,4 +34,16 @@ export default {
   column-gap: 40px;
   row-gap: 60px;
 }
+
+@media screen and (max-width: 768px) {
+  .habits__container {
+    /* text-align: center; */
+  }
+  .habits__grid {
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: repeat(3, auto);
+    column-gap: 20px;
+    row-gap: 40px;
+  }
+}
 </style>

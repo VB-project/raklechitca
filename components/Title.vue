@@ -42,4 +42,30 @@ export default {
   max-width: 80%;
   text-align: center;
 }
+
+@media screen and (max-width: 1280px) {
+  .title {
+    font-size: 28px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .title {
+    font-size: 24px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .title {
+    margin-right: 0;
+    margin-left: 0;
+    max-width: none;
+    text-align: center;
+  }
+}
+@media screen and (max-width: 320px) {
+  .title {
+    font-size: 18px;
+  }
+}
 </style>

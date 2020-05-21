@@ -13,15 +13,15 @@ export default {
   props: {
     url: {
       type: String,
-      required: true,
+      // required: true,
     },
     title: {
       type: String,
-      required: true,
+      // required: true,
     },
     text: {
       type: String,
-      required: true,
+      // required: true,
     },
   },
 };
@@ -47,6 +47,7 @@ export default {
 }
 
 .card__image-item {
+  object-fit: cover;
   width: 100%;
   height: 100%;
   position: absolute;
@@ -67,5 +68,17 @@ export default {
   color: #666666;
   margin-top: 16px;
   padding-right: 15px;
+}
+
+@media screen and (max-width: 1280px) {
+  .card__title {
+    font-size: 1.57rem;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .card__title {
+    font-size: 18px;
+  }
 }
 </style>

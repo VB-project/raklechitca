@@ -65,4 +65,11 @@ export default {
 .video-iframe__link_underline {
   text-decoration: underline;
 }
+
+@media screen and (max-width: 768px) {
+  .video-iframe__link {
+    margin-top: 20px;
+    font-size: 12px;
+  }
+}
 </style>

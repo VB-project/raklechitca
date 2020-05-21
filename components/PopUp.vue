@@ -41,4 +41,11 @@ export default {
   cursor: pointer;
   background-image: url('~@/assets/images/close.svg');
 }
+
+@media screen and (max-width: 768px) {
+  .popup {
+    min-width: 580px;
+    min-height: 520px;
+  }
+}
 </style>

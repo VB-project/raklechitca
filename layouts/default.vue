@@ -7,7 +7,6 @@
     />
     <main-header />
     <nuxt />
-    <nxt-footer />
     <overlay v-if="popupShown" @overlayClick="showPopUp"></overlay>
     <pop-up v-if="popupShown" @closeClick="showPopUp">
       <nxt-questionForm></nxt-questionForm>
@@ -19,7 +18,6 @@
 import Header from '@/components/Header';
 import Overlay from '@/components/ui/Overlay';
 import PopUp from '@/components/PopUp';
-import Footer from '@/components/Footer';
 import QuestionForm from '@/components/QuestionForm';
 import MobileMenu from '@/components/MobileMenu';
 
@@ -28,7 +26,6 @@ export default {
     'main-header': Header,
     overlay: Overlay,
     'pop-up': PopUp,
-    'nxt-footer': Footer,
     'nxt-questionForm': QuestionForm,
     'mobile-menu': MobileMenu,
   },
@@ -47,13 +44,14 @@ export default {
   methods: {
     showPopUp() {
       this.$store.commit('popup/togglePopup');
+      this.$store.commit('quiz/setIsFinishedFalse');
     },
   },
 };
 </script>
 
 <style>
-.layout__container {
+html {
   font-family: 'Inter', Arial, Helvetica, sans-serif;
   font-size: 16px;
   word-spacing: 1px;
@@ -64,29 +62,29 @@ export default {
   box-sizing: border-box;
   max-width: 1600px;
   min-width: 320px;
-  /* padding: 0px 60px 0px 60px; */
 }
-/* html {
-  font-family: 'Inter', Arial, Helvetica, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-} */
+
 *,
 *:before,
 *:after {
   box-sizing: border-box;
   margin: 0;
 }
-/* body {
-  min-width: 320px;
-} */
+
 .mobile-menu {
   display: none;
+}
+
+@media screen and (max-width: 1280px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  html {
+    font-size: 11, 4px;
+  }
 }
 @media screen and (max-width: 768px) {
   .mobile-menu {

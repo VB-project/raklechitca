@@ -2,11 +2,11 @@
   <div class="story__container">
     <div class="story__card">
       <div class="story__card-container">
-        <nxt-title
+        <nxt-title class="story__title"
           >Истории людей, победивших рак, но не свои привычки</nxt-title
         >
         <p class="story__text">
-          <carousel :itemArray="users"></carousel>
+          <carousel :itemArray="users"> </carousel>
         </p>
       </div>
     </div>
@@ -51,6 +51,7 @@ export default {
 }
 .story__card-container {
   height: 100%;
+  margin-right: 40px;
 }
 .story__text {
   display: flex;
@@ -63,5 +64,22 @@ export default {
   height: 100%;
   position: relative;
   right: 0px;
+}
+
+@media screen and (max-width: 768px) {
+  .story__container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .story__title {
+    text-align: center;
+  }
+  .story__card-container {
+    margin-right: 0;
+    align-items: center;
+  }
+  .story__text {
+    max-width: none;
+  }
 }
 </style>

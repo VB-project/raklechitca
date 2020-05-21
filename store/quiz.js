@@ -2,6 +2,7 @@ export const state = () => ({
   currentQuestion: 1,
   answers: {},
   questions: QUESTIONS,
+  isFinished: false,
 });
 
 export const mutations = {
@@ -14,12 +15,23 @@ export const mutations = {
   setQuestions(state, { questions }) {
     state.questions = questions;
   },
+  toggleIsFinnished(state) {
+    state.isFinished = !state.isFinished;
+  },
+  setIsFinishedFalse(state) {
+    state.isFinished = false;
+  },
 };
 
 export const actions = {
   async NEXT_QUESTION({ commit, state }, { answer }) {
     const { currentQuestion } = state;
     await commit('saveAnswer', { answer, currentQuestion });
+    if (currentQuestion === 12) {
+      commit('toggleIsFinnished');
+      commit('setCurrentQuestion', { currentQuestion: 1 });
+      return;
+    }
     commit('setCurrentQuestion', { currentQuestion: currentQuestion + 1 });
   },
   async PREV_QUESTION({ commit, state }) {

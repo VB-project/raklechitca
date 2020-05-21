@@ -1,22 +1,47 @@
 <template>
-  <section>
-    <h1>Error 404</h1>
-    <p>Страница не нейдена</p>
-  </section>
+  <div class="error">
+    <h2 class="error__title">404</h2>
+    <p class="error__par">Страница не нейдена.</p>
+    <a class="error__link" @click="goToMainPage">Перейти на главную.</a>
+  </div>
 </template>
+<script>
+export default {
+  methods: {
+    goToMainPage() {
+      this.$router.push('/');
+    },
+  },
+};
+</script>
+export default { methods }
 
 <style scoped>
-section {
+.error {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   margin: auto;
-  padding-top: 5rem;
-  font-size: 5rem;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 76px);
 }
 
-h1 {
-  color: red;
+.error__title {
+  font-size: 9rem;
+  line-height: 11rem;
+  font-weight: normal;
 }
-p {
-  color: red;
+.error__par {
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+}
+
+.error__link {
+  font-size: 1.125rem;
+  text-decoration: underline;
+  line-height: 1.5rem;
+  cursor: pointer;
+  padding-bottom: 37px;
 }
 </style>
