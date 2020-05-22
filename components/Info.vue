@@ -61,6 +61,10 @@ export default {
     margin-left: -50px;
     margin-right: -50px;
   }
+  .info__container_tall {
+    margin-left: -50px;
+    margin-right: -50px;
+  }
 
   @media screen and (max-width: 768px) {
     .info__container_fixed {
@@ -68,12 +72,12 @@ export default {
       margin-right: -40px;
       margin-bottom: 80px;
     }
+    .info__container_tall {
+      margin-left: -40px;
+      margin-right: -40px;
+    }
   }
 
-  .info__container_tall {
-    margin-left: -40px;
-    margin-right: -40px;
-  }
   @media screen and (max-width: 768px) {
     .info__container_thin {
       margin-top: 44px;

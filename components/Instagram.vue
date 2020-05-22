@@ -12,7 +12,13 @@
       </p>
     </div>
     <div class="instagram__cards">
-      <slot></slot>
+      <div
+        v-for="item in itemArray.slice(0, 8)"
+        :key="item.id"
+        class="instagram__image-container"
+      >
+        <img class="instagram__image-item" :src="item.image" />
+      </div>
     </div>
   </div>
 </template>
@@ -23,6 +29,12 @@ export default {
   components: {
     'nxt-title': Title,
   },
+  props: {
+    itemArray: {
+      type: Array,
+      default: {},
+    },
+  },
 };
 </script>
 
@@ -32,16 +44,34 @@ export default {
   margin-bottom: 100px;
   width: 100%;
 }
+
 .instagram_card {
   margin-right: 110px;
+  max-width: 24%;
 }
+
 .instagram__cards {
   display: grid;
-  grid-template-columns: repeat(4, 195px);
-  grid-template-rows: repeat(2, 195px);
-  justify-content: space-between;
+  grid-template-columns: repeat(4, auto);
+  grid-template-rows: repeat(2, auto);
   column-gap: 30px;
   row-gap: 30px;
+  width: 100%;
+}
+
+.instagram__image-container {
+  width: 100%;
+  padding-top: 100%;
+  background-color: black;
+  position: relative;
+}
+
+.instagram__image-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
@@ -49,10 +79,7 @@ export default {
   .instagram__text {
     font-size: 16px;
   }
-  .instagram__cards {
-    grid-template-columns: repeat(4, 171px);
-    grid-template-rows: repeat(2, 171px);
-  }
+
   .instagram__container {
     margin-bottom: 90px;
   }
@@ -62,12 +89,9 @@ export default {
   .instagram__container {
     margin-bottom: 80px;
   }
+
   .instagram__text {
     font-size: 13px;
-  }
-  .instagram__cards {
-    grid-template-columns: repeat(4, 136px);
-    grid-template-rows: repeat(2, 136px);
   }
 }
 @media screen and (max-width: 768px) {
@@ -76,16 +100,16 @@ export default {
   }
 
   .instagram__cards {
-    grid-template-columns: repeat(4, 157px);
-    grid-template-rows: repeat(2, 157px);
     column-gap: 20px;
     row-gap: 20px;
     margin-top: 60px;
   }
+
   .instagram__text {
     margin-right: 154px;
     margin-left: 154px;
   }
+
   .instagram_card {
     margin: 0;
   }

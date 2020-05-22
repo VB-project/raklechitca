@@ -29,15 +29,7 @@
         <span class="index__title-span">#ЭТОНЕЛЕЧИТСЯ</span></nxt-title
       >
     </info>
-    <instagram>
-      <panel
-        v-for="user in users.slice(0, 8)"
-        :key="user.id"
-        class="container__panel"
-      >
-        <card :url="user.image" />
-      </panel>
-    </instagram>
+    <instagram :itemArray="users"> </instagram>
     <about> </about>
 
     <statistics />
@@ -105,6 +97,9 @@ export default {
 </script>
 
 <style>
+.img {
+  width: 100%;
+}
 .container {
   padding: 0px 60px;
 }
