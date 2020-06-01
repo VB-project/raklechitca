@@ -1,62 +1,70 @@
 <template>
   <div class="question-form">
-    <div v-if="!this.$store.state.quiz.isFinished">
+    <div
+      class="question-form__container"
+      v-if="!this.$store.state.quiz.isFinished"
+    >
       <h2 class="question-form__title">{{ currentQuestion.title }}</h2>
-      <p class="question-form__question">
-        <span class="question-form__question-main">{{
-          currentQuestion.question
-        }}</span>
-        <span
-          v-if="currentQuestion.description"
-          class="question-form__question-description"
-          >{{ currentQuestion.description }}</span
-        >
-      </p>
-      <nxt-textarea
-        class="question-form__textarea"
-        :placeholder="placeholder"
-        :required="'required'"
-        v-model="answer"
-      />
-      <div
-        :class="[
-          'question-form__button-container',
-          {
-            'question-form__button-container_fin':
-              this.$store.state.quiz.currentQuestion === 12,
-          },
-        ]"
-      >
-        <nxt-button
-          class="button"
-          :theme="'light'"
-          :disabled="this.$store.state.quiz.currentQuestion === 1"
-          @btnClick="prevQuestion"
-          >Назад</nxt-button
-        >
-        <nxt-button
-          :theme="'input'"
-          v-if="this.$store.state.quiz.currentQuestion < 12"
-          :disabled="answer === ''"
-          @btnClick="nextQuestion"
-          >Далее</nxt-button
-        >
-        <nxt-button
-          v-else
-          :theme="'input'"
-          :disabled="answer === ''"
-          @btnClick="nextQuestion"
-          >Отправить</nxt-button
-        >
-        <p
-          class="question-form__legal"
-          v-if="this.$store.state.quiz.currentQuestion === 12"
-        >
-          Нажимая на кнопку «отправить», вы даете согласие на
-          <a @click="goToLegal" target="blank" class="question-form__legal-link"
-            >обработку персональных данных</a
+      <div class="question-form__content">
+        <p class="question-form__question">
+          <span class="question-form__question-main">{{
+            currentQuestion.question
+          }}</span>
+          <span
+            v-if="currentQuestion.description"
+            class="question-form__question-description"
+            >{{ currentQuestion.description }}</span
           >
         </p>
+        <nxt-textarea
+          class="question-form__textarea"
+          :placeholder="placeholder"
+          :required="'required'"
+          v-model="answer"
+        />
+        <div
+          :class="[
+            'question-form__button-container',
+            {
+              'question-form__button-container_fin':
+                this.$store.state.quiz.currentQuestion === 12,
+            },
+          ]"
+        >
+          <nxt-button
+            class="button"
+            :theme="'light'"
+            :disabled="this.$store.state.quiz.currentQuestion === 1"
+            @btnClick="prevQuestion"
+            >Назад</nxt-button
+          >
+          <nxt-button
+            :theme="'input'"
+            v-if="this.$store.state.quiz.currentQuestion < 12"
+            :disabled="answer === ''"
+            @btnClick="nextQuestion"
+            >Далее</nxt-button
+          >
+          <nxt-button
+            v-else
+            :theme="'input'"
+            :disabled="answer === ''"
+            @btnClick="nextQuestion"
+            >Отправить</nxt-button
+          >
+          <p
+            class="question-form__legal"
+            v-if="this.$store.state.quiz.currentQuestion === 12"
+          >
+            Нажимая на кнопку «отправить», вы даете согласие на
+            <nuxt-link
+              :to="{ name: 'legal' }"
+              target="_blank"
+              class="question-form__legal-link"
+              >обработку персональных данных</nuxt-link
+            >
+          </p>
+        </div>
       </div>
     </div>
 
@@ -107,10 +115,10 @@ export default {
       this.$store.commit('popup/togglePopup');
       this.$store.commit('quiz/setIsFinishedFalse');
     },
-    goToLegal() {
-      this.$router.push('/legal');
-      this.$store.commit('popup/togglePopup');
-    },
+    // goToLegal() {
+    //   // this.$router.push('/legal');
+    //   this.$store.commit('popup/togglePopup');
+    // },
   },
   props: {
     title: String,
@@ -134,10 +142,20 @@ export default {
   font-size: 2rem;
 }
 
+.question-form__container {
+  height: 100%;
+}
 .question-form__question {
   margin-top: 40px;
   font-weight: 500;
   font-size: 1.125rem;
+}
+
+.question-form__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 
 .question-form__button-container {

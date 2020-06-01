@@ -1,7 +1,7 @@
 <template>
   <div class="stories-page">
     <nxt-title>Истории неизлечимых привычек</nxt-title>
-    <form class="stories-page__search-container">
+    <form @submit="submit" class="stories-page__search-container">
       <nxt-input />
       <nxt-button class="stories-page__search-btn" theme="purple"
         >Поиск</nxt-button
@@ -10,9 +10,9 @@
     <div class="stories-page__cards">
       <panel v-for="user in users" :key="user.id" class="stories-page__panel">
         <card
-          :title="user.name"
-          :text="user.description"
-          :url="user.image"
+          :title="user.author"
+          :text="user.title"
+          :url="url + user.ImageUrl[0].formats.small.url"
           @cardClick="goToDetail(user.id)"
         />
       </panel>
@@ -22,7 +22,7 @@
       :ItemsPerPage="itemsPerPage"
       @onPageChanged="changeStartIndex"
     />
-    <nxt-footer />
+    <nxt-footer :blockName="'footer'" />
   </div>
 </template>
 
@@ -45,9 +45,6 @@ export default {
     'nxt-pagination': Pagination,
     'nxt-footer': Footer,
   },
-  beforeMount() {
-    this.$store.dispatch('users/fetchUsersApi');
-  },
   computed: {
     users() {
       return this.$store.getters['users/getUsers'].filter(
@@ -55,6 +52,12 @@ export default {
           index >= this.startIndex &&
           index <= this.startIndex + this.itemsPerPage - 1
       );
+    },
+    url() {
+      return process.env.BASE_URL;
+    },
+    submit(value) {
+      this.appliedStoriesName = value;
     },
   },
   methods: {
@@ -69,6 +72,8 @@ export default {
     return {
       itemsPerPage: 16,
       startIndex: 1,
+      storiesName: '',
+      appliedStoriesName: '',
     };
   },
 };
@@ -83,7 +88,7 @@ export default {
 }
 .stories-page__cards {
   display: grid;
-  grid-template-columns: repeat(4, auto);
+  grid-template-columns: repeat(4, 1fr);
   column-gap: 40px;
   row-gap: 60px;
   margin-top: 70px;

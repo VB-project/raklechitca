@@ -1,20 +1,35 @@
 <template>
   <div :class="`info__container info__container_${theme}`">
-    <slot>
-      <h1 class="info__title">#РАКЛЕЧИТСЯ</h1>
-    </slot>
+    <h2
+      v-if="titleTheme === 'main'"
+      class="info__title"
+      v-text="block.hashtag"
+    ></h2>
+    <nxt-title v-else :theme="`${titleTheme}`" class="index__title">
+      {{ block.title }}
+      <span class="info__title-span" v-text="block.hashtag"></span>
+    </nxt-title>
+
+    <slot></slot>
   </div>
 </template>
 
 <script>
-import Panel from '@/components/Panel';
-
+import Title from '@/components/Title';
 export default {
   components: {
-    panel: Panel,
+    'nxt-title': Title,
   },
   props: {
+    titleTheme: String,
     theme: String,
+    blockName: String,
+  },
+  computed: {
+    block() {
+      const blocks = this.$store.getters['blocks/getBlocks'];
+      return blocks.find(x => x.block === this.blockName);
+    },
   },
 };
 </script>
@@ -56,6 +71,14 @@ export default {
   text-align: center;
 }
 
+.info__title-span {
+  font-weight: bold;
+}
+
+.info__title-span {
+  font-weight: bold;
+}
+
 @media screen and (max-width: 1280px) {
   .info__container_fixed {
     margin-left: -50px;
@@ -84,6 +107,27 @@ export default {
     }
     .info__container {
       margin-bottom: 80px;
+    }
+  }
+  @media screen and (max-width: 320px) {
+    .info__title {
+      font-size: 36px;
+    }
+    .info__container {
+      margin-bottom: 50px;
+    }
+    .info__container_fixed {
+      margin-left: -15px;
+      margin-right: -15px;
+    }
+    .info__container_thin {
+      margin-top: 50px;
+      font-size: 16px;
+      line-height: 18px;
+    }
+    .info__container_tall {
+      margin-right: -15px;
+      margin-left: -15px;
     }
   }
 }

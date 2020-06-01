@@ -1,5 +1,5 @@
-<template
-  ><div>
+<template>
+  <div>
     <div v-swiper:mySwiper="swiperOption">
       <div class="swiper-wrapper">
         <div
@@ -7,15 +7,13 @@
           v-for="(cell, index) in cellArray"
           :key="index"
         >
-          <slot :name="index">
-            <h2>{{ cell.description }}</h2>
-            <!-- <card
-            :title="cell.name"
-            :text="cell.description"
-            :url="cell.image"
-            @cardClick="goToDetail(cell.id)"
-          /> -->
-          </slot>
+          <nxt-videoIframe
+            :url="`${cell.url}`"
+            :link="
+              'https://www.youtube.com/results?search_query=%23%D1%8D%D1%82%D0%BE%D0%BD%D0%B5%D0%BB%D0%B5%D1%87%D0%B8%D1%82%D1%81%D1%8F'
+            "
+            :linlText="blockNote"
+          />
         </div>
       </div>
       <div class="swiper-button-prev"></div>
@@ -26,24 +24,20 @@
 
 <script>
 import Card from '@/components/Card';
+import VideoIframe from '@/components/VideoIframe';
 
 export default {
   components: {
     card: Card,
+    'nxt-videoIframe': VideoIframe,
   },
   data() {
     return {
       swiperOption: {
-        // slidesPerView: 4,
-        slidesPerColumnFill: 'row',
-        // slidesPerColumn: 4,
-        slidesPerGroup: 1,
-
-        slidesPerView: 1,
-        // slidesPerView: 'auto',
+        loop: true,
+        slidesPerView: 'auto',
         centeredSlides: true,
         spaceBetween: 30,
-        watchSlidesProgress: true,
         navigation: {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',
@@ -59,8 +53,13 @@ export default {
       },
     };
   },
-  props: ['cellArray'],
+
+  props: ['cellArray', 'blockNote'],
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.swiper-slide {
+  width: 100% !important;
+}
+</style>

@@ -1,11 +1,11 @@
 <template>
-  <div class="layout__container">
+  <div class="layout__container" v-if="!this.loading">
     <mobile-menu
       v-if="isMobileMenuOpened"
       class="mobile-menu"
       @btnClick="showPopUp"
     />
-    <main-header />
+    <main-header :blockName="'header'" />
     <nuxt />
     <overlay v-if="popupShown" @overlayClick="showPopUp"></overlay>
     <pop-up v-if="popupShown" @closeClick="showPopUp">
@@ -47,6 +47,21 @@ export default {
       this.$store.commit('quiz/setIsFinishedFalse');
     },
   },
+
+  data() {
+    return {
+      loading: true,
+    };
+  },
+  async created() {
+    await this.$store.dispatch('blocks/fetchBlocks');
+    await this.$store.dispatch('users/fetchUsersApi');
+    await this.$store.dispatch('videos/fetchVideos');
+    await this.$store.dispatch('statistics/fetchStatistics');
+    await this.$store.dispatch('instagram/fetchIntstagram');
+
+    this.loading = false;
+  },
 };
 </script>
 
@@ -62,6 +77,7 @@ html {
   box-sizing: border-box;
   max-width: 1600px;
   min-width: 320px;
+  /* overflow: hidden; */
 }
 
 *,

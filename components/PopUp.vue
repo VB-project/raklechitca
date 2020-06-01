@@ -22,8 +22,8 @@ export default {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  min-width: 920px;
-  min-height: 600px;
+  width: 920px;
+  height: 600px;
   box-sizing: border-box;
   padding: 40px;
   background-color: #fff;

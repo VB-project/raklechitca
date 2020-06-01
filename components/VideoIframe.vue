@@ -7,12 +7,9 @@
       class="video-iframe-item"
     >
     </iframe>
-    <a :href="link" class="video-iframe__link"
-      >{{ linlText
-      }}<span class="video-iframe__link_underline">{{
-        linkTextUnderline
-      }}</span></a
-    >
+    <a :href="link" target="_blank" class="video-iframe__link">{{
+      linlText
+    }}</a>
   </div>
 </template>
 
@@ -31,18 +28,14 @@ export default {
       type: String,
       required: true,
     },
-    linkTextUnderline: {
-      type: String,
-      required: true,
-    },
   },
 };
 </script>
 
 <style scoped>
 .video-iframe {
-  width: 65%;
-  padding-bottom: calc(9 * 65% / 16);
+  width: 100%;
+  padding-bottom: calc(9 * 100% / 16);
   position: relative;
 }
 
@@ -70,6 +63,19 @@ export default {
   .video-iframe__link {
     margin-top: 20px;
     font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .video-iframe {
+    width: 100%;
+    padding-bottom: calc(9 * 100% / 16);
+  }
+  .video-iframe__link {
+    display: none;
+  }
+  .video-iframe-item {
+    height: 100%;
   }
 }
 </style>

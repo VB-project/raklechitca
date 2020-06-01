@@ -44,4 +44,15 @@ export default {};
   font-size: 1.125rem;
   margin-top: 44px;
 }
+@media screen and (max-width: 320px) {
+  .contacts__social {
+    font-size: 13px;
+    line-height: 15px;
+  }
+  .contacts__share {
+    margin-top: 18px;
+    font-size: 13px;
+    line-height: 15px;
+  }
+}
 </style>

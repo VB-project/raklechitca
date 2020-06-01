@@ -1,35 +1,39 @@
 <template>
-  <div :class="['about__container', `about__container_${theme}`]">
-    <nxt-title>Расскажите свою историю</nxt-title>
+  <div :class="'about__container'">
+    <nxt-title :theme="'tellStory'" v-text="block.title"></nxt-title>
+
     <div class="about__content">
       <div class="about__content-description">
-        <p class="about__content-description-text">
-          Мы публикуем новые истории на сайте раз в неделю. Есть 2 варианта
-          поделиться своей историей неизлечимых привычек, навязчивых идей и
-          болезненных привязанностей.
-        </p>
-      </div>
-      <div class="about__option-box">
+        <p class="about__content-description-text" v-html="block.text"></p>
+
         <div class="about__options">
-          <span class="about__option about__option_active">1-й вариант</span>
-          <span class="about__option">2-й вариант</span>
-        </div>
-        <div class="about__option-text">
-          <span class="about__option-text-item"
-            >Заполнить подробную форму прямо на сайте и мы опубликуем вашу
-            историю после проверки. Пожалуйста, заполняйте все пункты корректно,
-            если вы испытаете какие-то сложности, воспользуйтесь 2-м
-            вариантом.</span
+          <span
+            @click="setActive(block.extraTexts[0].text)"
+            class="about__option"
+            :class="{ about__option_active: !isActive }"
+            >{{ block.extraTexts[0].title }}</span
           >
-          <!-- <span class="about__option-text-item">Оставить контакт (почту или номер телефона) и мы свяжемся с вами, зададим вопросы, уточним детали вашей истории.</span> -->
-          <nxt-button
-            class="about__button"
-            @btnClick="showPopUp"
-            :theme="'purple'"
-            >Заполнить форму</nxt-button
+          <span
+            @click="setActive(block.extraTexts[1].text)"
+            class="about__option"
+            :class="{ about__option_active: isActive }"
+            >{{ block.extraTexts[1].title }}</span
           >
-          <!-- <nxt-button class="about__button" :theme="'purple'">Оставить контакт</nxt-button> -->
         </div>
+      </div>
+
+      <div class="about__option-text">
+        <span class="about__option-text-item" v-html="activeText"></span>
+        <nxt-button
+          v-if="!isActive"
+          class="about__button"
+          @btnClick="showPopUp"
+          :theme="'purple'"
+          >Заполнить форму</nxt-button
+        >
+        <nxt-button v-else class="about__button" :theme="'purple'"
+          >Оставить контакт</nxt-button
+        >
       </div>
     </div>
   </div>
@@ -48,9 +52,28 @@ export default {
     showPopUp() {
       this.$store.commit('popup/togglePopup');
     },
+    setActive(index) {
+      this.activeText = index;
+      this.isActive = !this.isActive;
+    },
   },
   props: {
     theme: String,
+    blockName: String,
+  },
+
+  computed: {
+    block() {
+      const blocks = this.$store.getters['blocks/getBlocks'];
+      return blocks.find(x => x.block === this.blockName);
+    },
+  },
+  data() {
+    return {
+      activeText:
+        '<p>Заполнить подробную форму прямо на сайте и мы опубликуем вашу историю после проверки. Пожалуйста, заполняйте все пункты корректно, если вы испытаете какие-то сложности, воспользуйтесь 2-м вариантом.</p>',
+      isActive: false,
+    };
   },
 };
 </script>
@@ -62,7 +85,9 @@ export default {
   background-color: #f7f7f7;
   margin-right: -60px;
   margin-left: -60px;
-  padding: 100px 60px;
+  padding: 100px 100px 0 60px;
+  font-size: 1.125rem;
+  line-height: 1.375rem;
 }
 
 .about__content {
@@ -72,18 +97,19 @@ export default {
 }
 
 .about__content-description {
-  margin-right: 195px;
-  width: 340px;
-}
-
-.about__option-box {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  width: 50%;
+  margin-bottom: 208px;
+}
+
+.about__content-description-text {
+  width: 50%;
 }
 
 .about__option {
   margin-bottom: 10px;
+  cursor: pointer;
 }
 
 .about__option_active {
@@ -99,10 +125,12 @@ export default {
 .about__option-text {
   display: flex;
   flex-direction: column;
+  width: 50%;
+  justify-content: space-between;
 }
 
-.about__option-text-item {
-  margin-bottom: 78px;
+.about__button {
+  margin-bottom: 100px;
 }
 
 .about__container_purple {
@@ -132,9 +160,7 @@ export default {
     flex-direction: column;
     max-width: 50%;
   }
-  .about__option-box {
-    flex-direction: column;
-  }
+
   .about__options {
     flex-direction: row;
   }
@@ -149,11 +175,38 @@ export default {
   .about__option:last-child {
     margin-right: 0px;
   }
-  .about__option-text-item {
-    margin-bottom: 50px;
-  }
+
   .about__button {
     max-width: 60%;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .about__container {
+    margin-top: 0;
+    padding: 50px 0;
+    margin-right: -15px;
+    margin-left: -15px;
+  }
+
+  .about__content {
+    max-width: 100%;
+    margin-right: 15px;
+    margin-left: 15px;
+    font-size: 13px;
+    line-height: 16px;
+  }
+
+  .about__content-description {
+    margin: 0 0 40px 0;
+  }
+  .about__options {
+    margin-bottom: 10px;
+  }
+
+  .about__button {
+    max-width: 100%;
+  }
+}
 </style>
+px

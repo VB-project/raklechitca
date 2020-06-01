@@ -1,31 +1,23 @@
 <template>
   <nav class="menu">
-    <nuxt-link
-      exact
-      no-prefetch
-      active-class="active"
-      class="menu__link"
-      to="/"
+    <nuxt-link exact no-prefetch active-class="active" class="menu__link" to="/"
+      >Главная</nuxt-link
     >
-      Главная
-    </nuxt-link>
     <nuxt-link
       exact
       no-prefetch
       active-class="active"
       class="menu__link"
       to="/stories"
+      >Истории</nuxt-link
     >
-      Истории
-    </nuxt-link>
     <nxt-button
       @btnClick="$emit('btnClick')"
       :hide="hide"
       class="menu__button"
       :theme="'light'"
+      >Рассказать историю</nxt-button
     >
-      Рассказать историю
-    </nxt-button>
   </nav>
 </template>
 
@@ -66,5 +58,27 @@ export default {
 
 .menu__link.nuxt-link-exact-active {
   border-bottom: 1px solid #000;
+}
+
+@media screen and (max-width: 320px) {
+  .menu {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    align-items: flex-start;
+    height: 120px;
+    margin: 15px 18px;
+  }
+  .menu__link {
+    font-size: 13px;
+    line-height: 16px;
+    padding-bottom: 18px;
+    margin: 0;
+  }
+  .menu__button {
+    font-size: 13px;
+    line-height: 16px;
+    margin: 0;
+  }
 }
 </style>

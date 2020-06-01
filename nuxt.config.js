@@ -34,6 +34,9 @@ export default {
     { src: '~/plugins/route.js' },
     { src: '~/plugins/swiper.js', ssr: false },
   ],
+  env: {
+    BASE_URL: 'https://strapi.kruzhok.io',
+  },
   /*
    ** Nuxt.js dev-modules
    */

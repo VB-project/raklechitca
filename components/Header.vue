@@ -1,11 +1,12 @@
 <template>
   <header class="header">
-    <nuxt-link to="/" v-if="$route.path !== '/'" class="header__logo"
-      >Проект Благотворительного Фонда Константина Хабенского</nuxt-link
-    >
-    <h1 class="header__logo" v-else>
-      Проект Благотворительного Фонда Константина Хабенского
-    </h1>
+    <nuxt-link
+      to="/"
+      v-if="$route.path !== '/'"
+      class="header__logo"
+      v-text="block.title"
+    ></nuxt-link>
+    <h1 class="header__logo" v-else v-text="block.title"></h1>
     <mobile-icon class="header__mobile-icon" />
     <main-menu class="header__main-menu" @btnClick="showPopUp" />
   </header>
@@ -25,6 +26,15 @@ export default {
   methods: {
     showPopUp() {
       this.$store.commit('popup/togglePopup');
+    },
+  },
+  props: {
+    blockName: String,
+  },
+  computed: {
+    block() {
+      const blocks = this.$store.getters['blocks/getBlocks'];
+      return blocks.find(x => x.block === this.blockName);
     },
   },
 };
@@ -74,6 +84,7 @@ export default {
   }
   .header__logo {
     max-width: 80%;
+    font-size: 12px;
   }
 }
 </style>

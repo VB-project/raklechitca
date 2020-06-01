@@ -61,4 +61,13 @@ export default {
 .menu__link.nuxt-link-exact-active {
   border-bottom: 1px solid #000;
 }
+
+@media screen and (max-width: 320px) {
+  .menu__link {
+    margin-left: 0;
+    margin-bottom: 18px;
+    font-size: 13px;
+    line-height: 15px;
+  }
+}
 </style>

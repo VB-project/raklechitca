@@ -89,4 +89,16 @@ export default {
   opacity: 0.7;
   cursor: not-allowed;
 }
+
+@media screen and (max-width: 320px) {
+  .button__theme-width {
+    width: 100%;
+    background-color: #fbfbfb;
+    margin-top: 40px;
+    font-size: 13px;
+  }
+  .button {
+    margin-bottom: 0;
+  }
+}
 </style>

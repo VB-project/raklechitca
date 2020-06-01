@@ -1,37 +1,33 @@
 <template>
   <div class="tellStory">
-    <nxt-title>О проекте</nxt-title>
-    <div class="tellStory__content">
-      <div class="tellStory__content-description">
-        <p class="tellStory__content-description-text">
-          Этот проект был создан благотворительным фондом Константина
-          Хабенского.
-        </p>
-      </div>
-      <div class="tellStory__option-box">
+    <h2 class="tellStory__title" v-text="block.hashtag"></h2>
+    <nxt-title :theme="'tellStory'" v-text="block.title"></nxt-title>
+    <div class="tellStory__container">
+      <div class="tellStory__content">
+        <div class="tellStory__content-description">
+          <p
+            class="tellStory__content-description-text"
+            v-html="block.text"
+          ></p>
+        </div>
         <div class="tellStory__options">
-          <span class="tellStory__option tellStory__option_active"
-            >Рак Лечится</span
+          <span
+            @click="setActive(block.extraTexts[0].text)"
+            class="tellStory__option"
+            :class="{ tellStory__option_active: !isActive }"
+            >{{ block.extraTexts[0].title }}</span
           >
-          <span class="tellStory__option">Фонд Хабенского</span>
+          <span
+            @click="setActive(block.extraTexts[1].text)"
+            class="tellStory__option"
+            :class="{ tellStory__option_active: isActive }"
+            >{{ block.extraTexts[1].title }}</span
+          >
         </div>
-        <div class="tellStory__option-text">
-          <span class="tellStory__option-text-item"
-            >Есть вещи, которые не лечатся. Особенности характера, страстные
-            увлечения, привычки, ставшие частью нашего «я», фобии, которые мы
-            приобрели в детстве. Список можно продолжать до бесконечности, но
-            одна болезнь в него точно не войдет. Эта болезнь — рак. Рак лечится,
-            и лучшее доказательство — люди с их неизлечимыми особенностями,
-            которые сумели победить рак.</span
-          >
-          <span class="tellStory__option-text-item"
-            >Рак лечится — проект Благотворительного Фонда Константина
-            Хабенского и Leo Burnett Moscow. С его помощью мы надеемся изменить
-            отношение людей к раку и заставить каждого поверить: онкологическое
-            заболевание — это не приговор.</span
-          >
-          <!-- <span class="tellStory__option-text-item">Благотворительный Фонд Константина Хабенского с 2008 года помогает детям с онкологическими и другими тяжелыми заболеваниями головного мозга. Фонд не только поддерживает семью заболевшего ребенка в самый сложный момент, оплачивая обследования, лечение и медицинские препараты, но и в целом меняет систему оказания помощи детям с опухолями мозга в России.</span> -->
-        </div>
+      </div>
+
+      <div class="tellStory__option-text">
+        <p class="tellStory__option-text-item" v-html="activeText"></p>
       </div>
     </div>
   </div>
@@ -47,48 +43,77 @@ export default {
     'nxt-button': Button,
   },
   methods: {
-    showPopUp() {
-      this.$store.commit('popup/togglePopup');
+    setActive(index) {
+      this.activeText = index;
+      this.isActive = !this.isActive;
     },
   },
   props: {
     theme: String,
+    blockName: String,
+  },
+
+  computed: {
+    block() {
+      const blocks = this.$store.getters['blocks/getBlocks'];
+      return blocks.find(x => x.block === this.blockName);
+    },
+  },
+  data() {
+    return {
+      activeText:
+        '<p>Есть вещи, которые не лечатся. Особенности характера, страстные увлечения, привычки, ставшие частью нашего «я», фобии, которые мы приобрели в детстве. Список можно продолжать до бесконечности, но одна болезнь в него точно не войдет. Эта болезнь — рак. Рак лечится, и лучшее доказательство — люди с их неизлечимыми особенностями, которые сумели победить рак.&lt;br&gt;<br>&nbsp; &nbsp; &nbsp; Рак лечится — проект Благотворительного Фонда Константина Хабенского и Leo Burnett Moscow. С его помощью мы надеемся изменить отношение людей к раку и заставить каждого поверить: онкологическое заболевание — это не приговор.</p>',
+      isActive: false,
+    };
   },
 };
 </script>
 
 <style scoped>
 .tellStory {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #613a93;
+  color: #fff;
+  align-items: center;
   padding: 0 60px;
+  margin-left: -60px;
+  margin-right: -60px;
+  margin-bottom: 0;
+}
+
+.tellStory__title {
+  margin: 0px 0px 30px;
+  max-width: 420px;
+  font-family: 'Inter';
+  font-weight: 600;
+  line-height: 2.25rem;
+  font-size: 4rem;
+  padding-top: 90px;
+  margin-bottom: 70px;
 }
 .tellStory__container {
   display: flex;
-  flex-direction: column;
-  background-color: #f7f7f7;
-  margin-right: -60px;
-  margin-left: -60px;
-  padding: 100px 60px;
 }
 
 .tellStory__content {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  width: 50%;
 }
 
 .tellStory__content-description {
-  margin-right: 195px;
-  width: 340px;
-}
-
-.tellStory__option-box {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  width: 50%;
+  margin-bottom: 208px;
 }
 
 .tellStory__option {
   margin-bottom: 10px;
+  cursor: pointer;
 }
 
 .tellStory__option_active {
@@ -97,14 +122,14 @@ export default {
 .tellStory__options {
   display: flex;
   flex-direction: column;
-  /* min-width: 100px; */
   margin-right: 40px;
 }
 
 .tellStory__option-text {
   display: flex;
   flex-direction: column;
-  margin-bottom: 100px;
+  width: 50%;
+  justify-content: space-between;
 }
 
 .tellStory__option-text-item {
@@ -120,7 +145,7 @@ export default {
 }
 
 @media screen and (max-width: 1280px) {
-  .tellStory__container {
+  .tellStory {
     margin-left: -50px;
     margin-right: -50px;
   }
@@ -131,12 +156,12 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-right: -40px;
+    margin-left: -40px;
   }
   .tellStory__container {
     display: flex;
     flex-direction: column;
-    margin-right: -40px;
-    margin-left: -40px;
     padding: 80px 80px;
     align-items: center;
   }
@@ -161,8 +186,36 @@ export default {
   .tellStory__option:last-child {
     margin-right: 0px;
   }
+}
+
+@media screen and (max-width: 320px) {
+  .tellStory {
+    margin-top: 50px;
+    margin-right: 15px;
+    margin-left: 15px;
+
+    padding: 0;
+  }
+  .tellStory__options {
+    margin: 0;
+    font-size: 13px;
+    line-height: 19px;
+  }
+  .tellStory__content {
+    max-width: 100%;
+  }
+
+  .tellStory__content-description-text {
+    font-size: 13px;
+    line-height: 16px;
+  }
   .tellStory__option-text-item {
-    margin-bottom: 50px;
+    font-size: 15px;
+    line-height: 19px;
+    margin-bottom: 20px;
+  }
+  .tellStory__content-description {
+    margin-bottom: 40px;
   }
 }
 </style>

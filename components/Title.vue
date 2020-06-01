@@ -30,6 +30,10 @@ export default {
   margin-bottom: 60px;
 }
 
+.title__theme_tellStory {
+  align-self: start;
+}
+
 .title.title__theme_info {
   font-size: 4rem;
   padding-top: 90px;
@@ -66,6 +70,7 @@ export default {
 @media screen and (max-width: 320px) {
   .title {
     font-size: 18px;
+    line-height: 21px;
   }
 }
 </style>
