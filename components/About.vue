@@ -31,7 +31,11 @@
           :theme="'purple'"
           >Заполнить форму</nxt-button
         >
-        <nxt-button v-else class="about__button" :theme="'purple'"
+        <nxt-button
+          v-else
+          class="about__button"
+          @btnClick="showContactsForm"
+          :theme="'purple'"
           >Оставить контакт</nxt-button
         >
       </div>
@@ -51,6 +55,9 @@ export default {
   methods: {
     showPopUp() {
       this.$store.commit('popup/togglePopup');
+    },
+    showContactsForm() {
+      this.$store.commit('popup/toggleContactsForm');
     },
     setActive(index) {
       this.activeText = index;
@@ -153,21 +160,37 @@ export default {
     flex-direction: column;
     margin-right: -40px;
     margin-left: -40px;
-    padding: 80px 80px;
+    padding: 80px 150px 0 150px;
     align-items: center;
   }
   .about__content {
     flex-direction: column;
-    max-width: 50%;
+    align-items: center;
   }
 
   .about__options {
     flex-direction: row;
+    margin-top: 80px;
+  }
+  .about__option-text {
+    width: 100%;
+  }
+
+  .about__option_active {
+    border-bottom: 2px solid #613a93;
+  }
+
+  .about__option-text-item {
+    margin-bottom: 50px;
   }
   .about__content-description {
+    flex-direction: column;
     margin: 0;
     width: 100%;
-    margin-bottom: 80px;
+    margin-bottom: 30px;
+  }
+  .about__content-description-text {
+    width: 100%;
   }
   .about__option {
     margin-right: 30px;
@@ -178,34 +201,24 @@ export default {
 
   .about__button {
     max-width: 60%;
+    margin-bottom: 80px;
   }
 }
-
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 320px) {
   .about__container {
-    margin-top: 0;
-    padding: 50px 0;
     margin-right: -15px;
     margin-left: -15px;
-  }
-
-  .about__content {
-    max-width: 100%;
-    margin-right: 15px;
-    margin-left: 15px;
-    font-size: 13px;
-    line-height: 16px;
-  }
-
-  .about__content-description {
-    margin: 0 0 40px 0;
+    padding: 50px 30px 0 30px;
   }
   .about__options {
-    margin-bottom: 10px;
+    margin-top: 40px;
   }
-
+  .about__option-text-item {
+    margin-bottom: 30px;
+  }
   .about__button {
     max-width: 100%;
+    margin-bottom: 50px;
   }
 }
 </style>

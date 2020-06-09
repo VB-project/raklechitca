@@ -20,7 +20,7 @@ export default {
 
 <style scoped>
 .statusbar {
-  width: 260px;
+  width: 90%;
   height: 40px;
   background: #f4f4f4;
   position: relative;
@@ -38,21 +38,12 @@ export default {
 
 @media screen and (max-width: 1280px) {
   .statusbar {
-    width: 229px;
     height: 35px;
   }
 }
 
 @media screen and (max-width: 1024px) {
   .statusbar {
-    width: 188px;
-    height: 28px;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .statusbar {
-    width: 196px;
     height: 28px;
   }
 }

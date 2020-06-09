@@ -5,14 +5,14 @@
     <info :theme="'thin'" :titleTheme="'wide'" :blockName="'note-1'"></info>
     <habits :blockName="'stories'">
       <panel
-        v-for="user in users.slice(0, 8)"
+        v-for="user in cardsReturn()"
         :key="user.id"
         class="container__panel"
       >
         <card
           :title="user.author"
           :text="user.title"
-          :url="url + user.ImageUrl[0].formats.small.url"
+          :url="url + user.ImageUrl[0].url"
           @cardClick="goToDetail(user.id)"
         />
       </panel>
@@ -55,11 +55,6 @@ export default {
     'nxt-title': Title,
     'nxt-footer': Footer,
   },
-  data() {
-    return {
-      mobile: false,
-    };
-  },
   methods: {
     goToDetail(id) {
       this.$router.push(`/stories/${id}`);
@@ -67,8 +62,14 @@ export default {
     showPopUp() {
       this.$store.commit('popup/togglePopup');
     },
-    onResize() {
-      this.mobile = document.documentElement.clientWidth > 320 ? false : true;
+    cardsReturn() {
+      if (this.tabCheck) {
+        return this.users.slice(0, 9);
+      }
+      if (this.mobileCheck) {
+        return this.users.slice(0, 6);
+      } else return this.users.slice(0, 8);
+      console.log(this.mobile);
     },
   },
   computed: {
@@ -78,13 +79,28 @@ export default {
     url() {
       return process.env.BASE_URL;
     },
+    popupShown() {
+      return this.$store.getters['popup/getPopupShown'];
+    },
+    mobileCheck() {
+      return this.$store.getters['mobile/getMobileState'];
+    },
+    tabCheck() {
+      return this.$store.getters['mobile/getTabState'];
+    },
   },
-  beforeMount() {
-    window.addEventListener('resize', this.onResize);
-    this.onResize();
+  data() {
+    return {
+      loading: true,
+      title: this.$store.getters['blocks/getBlocks'].find(
+        x => x.block === 'cover'
+      ).hashtag,
+    };
   },
-  beforeDestroy() {
-    window.removeEventListener('resize', this.onResize);
+  head() {
+    return {
+      title: this.title,
+    };
   },
 };
 </script>

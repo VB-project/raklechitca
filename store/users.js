@@ -22,6 +22,7 @@ export const actions = {
       });
     });
   },
+
   fetchUsersApiWithID(state, payload) {
     return axios
       .get(`${process.env.BASE_URL}/stories/${payload.id}`)

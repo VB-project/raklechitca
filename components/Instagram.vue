@@ -109,6 +109,10 @@ export default {
 @media screen and (max-width: 768px) {
   .instagram__container {
     flex-direction: column;
+    align-items: center;
+  }
+  .instagram__title {
+    max-width: 100%;
   }
 
   .instagram__cards {
@@ -117,13 +121,9 @@ export default {
     margin-top: 60px;
   }
 
-  .instagram__text {
-    margin-right: 154px;
-    margin-left: 154px;
-  }
-
   .instagram_card {
     margin: 0;
+    max-width: 50%;
   }
 }
 

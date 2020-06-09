@@ -11,6 +11,17 @@
     <pop-up v-if="popupShown" @closeClick="showPopUp">
       <nxt-questionForm></nxt-questionForm>
     </pop-up>
+    <overlay
+      v-if="contactsFormShown"
+      @overlayClick="showContactsForm"
+    ></overlay>
+    <pop-up v-if="contactsFormShown" @closeClick="showContactsForm">
+      <nxt-contactsForm />
+    </pop-up>
+    <overlay v-if="shareShown" @overlayClick="showShare"></overlay>
+    <pop-up v-if="shareShown" :theme="'share'" @closeClick="showShare">
+      <share />
+    </pop-up>
   </div>
 </template>
 
@@ -20,6 +31,8 @@ import Overlay from '@/components/ui/Overlay';
 import PopUp from '@/components/PopUp';
 import QuestionForm from '@/components/QuestionForm';
 import MobileMenu from '@/components/MobileMenu';
+import ContactsForm from '@/components/ContactsForm';
+import Share from '@/components/Share';
 
 export default {
   components: {
@@ -28,24 +41,52 @@ export default {
     'pop-up': PopUp,
     'nxt-questionForm': QuestionForm,
     'mobile-menu': MobileMenu,
+    'nxt-contactsForm': ContactsForm,
+    share: Share,
   },
 
   computed: {
     popupShown() {
       return this.$store.getters['popup/getPopupShown'];
     },
-    questions() {
-      return this.$store.getters['questions/getQuestion'];
+    contactsFormShown() {
+      return this.$store.getters['popup/getcontactsFormShown'];
+    },
+    shareShown() {
+      return this.$store.getters['popup/getShareShown'];
     },
     isMobileMenuOpened() {
       return this.$store.getters['mobile-menu/getMobileMenuState'];
     },
   },
+
   methods: {
     showPopUp() {
       this.$store.commit('popup/togglePopup');
       this.$store.commit('quiz/setIsFinishedFalse');
     },
+    showContactsForm() {
+      this.$store.commit('popup/toggleContactsForm');
+    },
+    showShare() {
+      this.$store.commit('popup/togglShare');
+    },
+    onResize() {
+      const tab =
+        document.documentElement.clientWidth < 769 &&
+        document.documentElement.clientWidth > 320
+          ? true
+          : false;
+      const mobile = document.documentElement.clientWidth < 321 ? true : false;
+      this.$store.commit('mobile/setState', { mobile, tab });
+    },
+  },
+  beforeMount() {
+    window.addEventListener('resize', this.onResize);
+    this.onResize();
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.onResize);
   },
 
   data() {
@@ -77,7 +118,6 @@ html {
   box-sizing: border-box;
   max-width: 1600px;
   min-width: 320px;
-  /* overflow: hidden; */
 }
 
 *,

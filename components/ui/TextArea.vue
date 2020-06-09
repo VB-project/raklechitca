@@ -46,7 +46,6 @@ export default {
   display: block;
   width: 100%;
   max-height: 100%;
-  /* margin-top: 130px; */
   resize: none;
   border: none;
   border-bottom: 1px solid #e7e7e7;
@@ -60,6 +59,5 @@ export default {
   font-size: 1.125rem;
   font-weight: 500;
   color: #000;
-  /* margin-bottom: 200px; */
 }
 </style>

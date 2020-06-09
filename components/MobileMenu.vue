@@ -67,7 +67,7 @@ export default {
     padding: 0;
     align-items: flex-start;
     height: 120px;
-    margin: 15px 18px;
+    margin: 18px 0 0 18px;
   }
   .menu__link {
     font-size: 13px;
@@ -79,6 +79,9 @@ export default {
     font-size: 13px;
     line-height: 16px;
     margin: 0;
+  }
+  .menu__link.nuxt-link-exact-active {
+    border: none;
   }
 }
 </style>

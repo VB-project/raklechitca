@@ -41,18 +41,7 @@ export default {
    ** Nuxt.js dev-modules
    */
   buildModules: [],
-  /*
-   ** Nuxt.js modules
-   */
-  modules: [
-    // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios',
-    '@nuxtjs/pwa',
-  ],
-  /*
-   ** Axios module configuration
-   ** See https://axios.nuxtjs.org/options
-   */
+  modules: ['@nuxtjs/axios', '@nuxtjs/pwa'],
   axios: {},
   /*
    ** Build configuration

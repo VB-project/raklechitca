@@ -7,9 +7,9 @@
       <h2 class="question-form__title">{{ currentQuestion.title }}</h2>
       <div class="question-form__content">
         <p class="question-form__question">
-          <span class="question-form__question-main">{{
-            currentQuestion.question
-          }}</span>
+          <span class="question-form__question-main">
+            {{ currentQuestion.question }}
+          </span>
           <span
             v-if="currentQuestion.description"
             class="question-form__question-description"
@@ -67,7 +67,6 @@
         </div>
       </div>
     </div>
-
     <div class="question-form__finish" v-else>
       <h2 class="question-form__title_fin">Спасибо что приняли участие!</h2>
       <nxt-button @btnClick="showPopUp" :theme="'purple'">Закрыть</nxt-button>
@@ -111,14 +110,12 @@ export default {
       });
       this.answer = this.initialAnswer || '';
     },
-    showPopUp() {
-      this.$store.commit('popup/togglePopup');
-      this.$store.commit('quiz/setIsFinishedFalse');
+    async showPopUp() {
+      await this.$store.commit('popup/togglePopup');
+      await this.$store.commit('quiz/toggleIsFinnished');
+      await console.log(this.$store.getters['quiz/getAnswers']);
+      await this.$store.commit('quiz/resetAnswers');
     },
-    // goToLegal() {
-    //   // this.$router.push('/legal');
-    //   this.$store.commit('popup/togglePopup');
-    // },
   },
   props: {
     title: String,
@@ -162,6 +159,7 @@ export default {
   width: 36%;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 40px;
 }
 
 .question-form__finish {
@@ -200,6 +198,18 @@ export default {
   .question-form__legal {
     margin-top: 10px;
     max-width: none;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .question-form__title {
+    font-size: 1.125rem;
+  }
+  .question-form__question-main {
+    font-size: 1rem;
+  }
+  .question-form__button-container {
+    width: 60%;
   }
 }
 </style>

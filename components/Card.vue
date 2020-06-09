@@ -85,6 +85,10 @@ export default {
   .card__text {
     font-size: 13px;
     line-height: 16px;
+    margin-top: 16px;
+  }
+  .card__title {
+    margin-top: 16px;
   }
 }
 </style>

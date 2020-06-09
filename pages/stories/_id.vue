@@ -1,14 +1,16 @@
 <template>
   <div class="card-page">
-    <div v-if="mobile" class="card-page__mobile">
+    <div v-if="tabCheck || mobileCheck" class="card-page__mobile">
       <div class="card-page__main">
         <span class="card-page__title">{{ currentUser.author }}</span>
         <span class="card-page__qoute">{{ currentUser.title }}</span>
       </div>
-      <img :src="currentUser.image" class="card-page__image" />
+      <img :src="url + currentUser.ImageUrl[0].url" class="card-page__image" />
 
       <div class="card-page__share">
-        <nxt-button :theme="'share'">Поделитесь &#8599;</nxt-button>
+        <nxt-button @btnClick="showContacts" :theme="'share'"
+          >Поделитесь &#8599;</nxt-button
+        >
         <span class="card-page__date">20 апреля 2018</span>
       </div>
     </div>
@@ -26,27 +28,32 @@
           <span class="card-page__qoute">{{ currentUser.title }}</span>
         </div>
         <div class="card-page__share">
-          <nxt-button :theme="'share'">Поделитесь &#8599;</nxt-button>
+          <nxt-button @btnClick="showContacts" :theme="'share'"
+            >Поделитесь &#8599;</nxt-button
+          >
           <span class="card-page__date">20 апреля 2018</span>
         </div>
       </div>
     </div>
 
     <p class="card-page__text" v-html="currentUser.text"></p>
-    <nxt-button class="card-page__share-btn" :theme="'share'"
+    <nxt-button
+      class="card-page__share-btn"
+      :theme="'share'"
+      @btnClick="showContacts"
       >Поделитесь этой статьей в своих социальных сетях &#8599;</nxt-button
     >
 
     <div class="card-page__container">
       <panel
-        v-for="user in users.slice(0, 4)"
+        v-for="user in cardsReturn()"
         :key="user.id"
         class="stories-page__panel"
       >
         <card
           :title="user.author"
           :text="user.title"
-          :url="url + user.ImageUrl[0].formats.small.url"
+          :url="url + user.ImageUrl[0].url"
           @cardClick="goToDetail(user.id)"
         />
       </panel>
@@ -86,6 +93,17 @@ export default {
     url() {
       return process.env.BASE_URL;
     },
+    mobileCheck() {
+      return this.$store.getters['mobile/getMobileState'];
+    },
+    tabCheck() {
+      return this.$store.getters['mobile/getTabState'];
+    },
+  },
+  head() {
+    return {
+      title: this.currentUser.author,
+    };
   },
   async fetch({ store, route }) {
     await store.dispatch('users/fetchUsersApiWithID', { id: route.params.id });
@@ -94,19 +112,21 @@ export default {
     goToStories() {
       this.$router.push('/stories/');
     },
+    showContacts() {
+      this.$store.commit('popup/togglShare');
+    },
     goToDetail(id) {
       this.$router.push(`/stories/${id}`);
     },
-    onResize() {
-      this.mobile = document.documentElement.clientWidth > 768 ? false : true;
+    cardsReturn() {
+      if (this.tabCheck) {
+        return this.users.slice(0, 3);
+      }
+      if (this.mobileCheck) {
+        return this.users.slice(0, 2);
+      } else return this.users.slice(0, 4);
+      console.log(this.mobile);
     },
-  },
-  created() {
-    window.addEventListener('resize', this.onResize);
-    this.onResize();
-  },
-  beforeDestroy() {
-    window.removeEventListener('resize', this.onResize);
   },
 };
 </script>
@@ -179,7 +199,6 @@ export default {
   .card-page {
     margin: 100px 64px;
   }
-
   .card-page__mobile {
     display: flex;
     flex-direction: column;
@@ -200,10 +219,61 @@ export default {
 
   .card-page__container {
     margin-top: 120px;
+    grid-template-columns: repeat(3, 1fr);
   }
   .footer__container {
     padding-bottom: 0;
     margin-top: 70px;
+  }
+  .card-page__share {
+    font-size: 1rem;
+    width: 100%;
+  }
+  .card-page__text {
+    max-width: 100%;
+    font-size: 1.125rem;
+    margin-top: 100px;
+  }
+  .card-page__share-btn {
+    padding: 24px 0 24px 0;
+    margin-top: 80px;
+    width: 100%;
+    border: 1px solid #efefef;
+    text-align: center;
+    line-height: 1rem;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .card-page {
+    margin: 50px 15px;
+  }
+  .card-page__text {
+    font-size: 0.81rem;
+    margin-top: 60px;
+  }
+  .card-page__main {
+    font-size: 1.125rem;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .card-page__image {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 30px;
+  }
+  .card-page__share {
+    font-size: 0.81rem;
+  }
+  .card-page__share-btn {
+    padding: 20px 0 20px 0;
+    margin-top: 40px;
+  }
+  .card-page__container {
+    margin-top: 100px;
+    grid-template-columns: repeat(1, 1fr);
+    row-gap: 30px;
   }
 }
 </style>

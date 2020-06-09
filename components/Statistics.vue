@@ -1,6 +1,6 @@
 <template>
   <div class="statistics__container">
-    <nxt-title class="statistics__title" v-text="block.title"></nxt-title>
+    <nxt-title :theme="'tellStory'" v-text="block.title"></nxt-title>
     <div class="statistic__grid">
       <panel v-for="stat in statistics" :key="stat.id">
         <nxt-statcard
@@ -72,11 +72,9 @@ export default {
     margin-bottom: 80px;
   }
   .statistic__grid {
-    overflow: scroll;
-    grid-template-columns: repeat(4, 1fr);
     column-gap: 30px;
     margin-top: 30px;
-    margin-bottom: 0;
+    overflow-x: scroll;
   }
 }
 
@@ -85,10 +83,8 @@ export default {
     margin-top: 50px;
     margin-bottom: 50px;
   }
-
-  .statistics__title {
-    text-align: left;
-    margin-bottom: 10px;
+  .statistic__grid {
+    margin-top: 0;
   }
 }
 </style>

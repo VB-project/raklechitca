@@ -26,14 +26,8 @@ export default {
 <style scoped>
 .statcard__card {
   position: relative;
-  /* display: block; */
-
-  /* display: flex;
-  flex-direction: column; */
-
   border: 1px solid #efefef;
   box-sizing: border-box;
-  /* justify-content: space-between; */
 }
 
 .statcard__wrapper {
@@ -80,6 +74,9 @@ export default {
 @media screen and (max-width: 768px) {
   .statcard__count {
     font-size: 26px;
+  }
+  .statcard__card {
+    width: 216px;
   }
 }
 </style>

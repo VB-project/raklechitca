@@ -16,13 +16,25 @@
         >Youtube</a
       >
     </span>
-
-    <span class="contacts__share">Поделитесь &#8599;</span>
+    <nxt-button @btnClick="showContacts" class="contacts__share"
+      >Поделитесь &#8599;</nxt-button
+    >
   </div>
 </template>
 
 <script>
-export default {};
+import Button from '@/components/ui/Button';
+
+export default {
+  components: {
+    'nxt-button': Button,
+  },
+  methods: {
+    showContacts() {
+      this.$store.commit('popup/togglShare');
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -43,6 +55,9 @@ export default {};
 .contacts__share {
   font-size: 1.125rem;
   margin-top: 44px;
+  align-self: start;
+  background-color: #fff;
+  padding: 0;
 }
 @media screen and (max-width: 320px) {
   .contacts__social {

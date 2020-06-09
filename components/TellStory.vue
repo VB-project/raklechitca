@@ -1,6 +1,5 @@
 <template>
   <div class="tellStory">
-    <h2 class="tellStory__title" v-text="block.hashtag"></h2>
     <nxt-title :theme="'tellStory'" v-text="block.title"></nxt-title>
     <div class="tellStory__container">
       <div class="tellStory__content">
@@ -158,22 +157,29 @@ export default {
     align-items: center;
     margin-right: -40px;
     margin-left: -40px;
+    padding: 80px 154px 80px 154px;
   }
   .tellStory__container {
     display: flex;
     flex-direction: column;
-    padding: 80px 80px;
+    padding: 0;
     align-items: center;
   }
   .tellStory__content {
     flex-direction: column;
-    max-width: 50%;
+    width: 100%;
   }
   .tellStory__option-box {
     flex-direction: column;
   }
   .tellStory__options {
     flex-direction: row;
+    margin-bottom: 30px;
+    margin-right: 0;
+  }
+  .tellStory__option_active {
+    margin-bottom: 5px;
+    border-bottom: 2px solid #fff;
   }
   .tellStory__content-description {
     margin: 0;
@@ -183,6 +189,9 @@ export default {
   .tellStory__option {
     margin-right: 30px;
   }
+  .tellStory__option-text {
+    width: 100%;
+  }
   .tellStory__option:last-child {
     margin-right: 0px;
   }
@@ -191,10 +200,10 @@ export default {
 @media screen and (max-width: 320px) {
   .tellStory {
     margin-top: 50px;
-    margin-right: 15px;
-    margin-left: 15px;
+    margin-right: -15px;
+    margin-left: -15px;
 
-    padding: 0;
+    padding: 50px 15px 50px 15px;
   }
   .tellStory__options {
     margin: 0;

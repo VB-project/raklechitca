@@ -1,5 +1,5 @@
 export const state = () => ({
-  currentQuestion: 1,
+  currentQuestion: 11,
   answers: {},
   questions: QUESTIONS,
   isFinished: false,
@@ -21,6 +21,9 @@ export const mutations = {
   setIsFinishedFalse(state) {
     state.isFinished = false;
   },
+  resetAnswers(state) {
+    state.answers = {};
+  },
 };
 
 export const actions = {
@@ -28,8 +31,8 @@ export const actions = {
     const { currentQuestion } = state;
     await commit('saveAnswer', { answer, currentQuestion });
     if (currentQuestion === 12) {
-      commit('toggleIsFinnished');
-      commit('setCurrentQuestion', { currentQuestion: 1 });
+      await commit('toggleIsFinnished');
+      await commit('setCurrentQuestion', { currentQuestion: 1 });
       return;
     }
     commit('setCurrentQuestion', { currentQuestion: currentQuestion + 1 });
@@ -42,6 +45,12 @@ export const actions = {
     await commit('setCurrentQuestion', {
       currentQuestion: currentQuestion - 1,
     });
+  },
+};
+
+export const getters = {
+  getAnswers(state) {
+    return state.answers;
   },
 };
 

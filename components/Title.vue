@@ -65,12 +65,19 @@ export default {
     margin-left: 0;
     max-width: none;
     text-align: center;
+    align-self: center;
+    max-width: 50%;
+  }
+  .title__theme_wide {
+    max-width: 80%;
   }
 }
 @media screen and (max-width: 320px) {
   .title {
     font-size: 18px;
     line-height: 21px;
+    max-width: 100%;
+    width: 100%;
   }
 }
 </style>

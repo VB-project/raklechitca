@@ -10,7 +10,7 @@
     :disabled="disabled"
     :show="true"
   >
-    <slot>Some Button</slot>
+    <slot></slot>
   </button>
 </template>
 
@@ -52,7 +52,6 @@ export default {
   color: white;
   width: 280px;
   height: 52px;
-  /* margin-left: 30px; */
 }
 .button__theme-purple:hover {
   background-color: #613a93;
@@ -83,6 +82,7 @@ export default {
 .button__theme-share {
   background-color: #fff;
   font-size: 1.125rem;
+  text-align: start;
 }
 
 .button__disabled {
@@ -96,9 +96,21 @@ export default {
     background-color: #fbfbfb;
     margin-top: 40px;
     font-size: 13px;
+    height: 50px;
   }
   .button {
     margin-bottom: 0;
+  }
+  .button__theme-input {
+    margin-left: 30px;
+    background-color: #613a93;
+    color: white;
+    width: 280px;
+    height: 30px;
+  }
+  .button__theme-share {
+    font-size: 0.81rem;
+    width: 80%;
   }
 }
 </style>

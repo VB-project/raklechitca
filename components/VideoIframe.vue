@@ -2,7 +2,7 @@
   <div class="video-iframe">
     <iframe
       :src="url"
-      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+      allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
       allowfullscreen
       class="video-iframe-item"
     >
@@ -22,11 +22,11 @@ export default {
     },
     link: {
       type: String,
-      required: true,
+      required: false,
     },
     linlText: {
       type: String,
-      required: true,
+      required: false,
     },
   },
 };
@@ -38,8 +38,17 @@ export default {
   padding-bottom: calc(9 * 100% / 16);
   position: relative;
 }
+iframe {
+  border: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
 
-.video-iframe-item {
+/* .video-iframe-item {
   border: 0;
   position: absolute;
   top: 0;
@@ -47,7 +56,7 @@ export default {
   display: block;
   width: 100%;
   height: calc(100% - 30px);
-}
+} */
 .video-iframe__link {
   position: absolute;
   bottom: 0;

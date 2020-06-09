@@ -243,7 +243,7 @@
         </li>
       </ol>
     </ol>
-    <nxt-footer />
+    <nxt-footer :blockName="'footer'" />
   </div>
 </template>
 

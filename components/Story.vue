@@ -16,11 +16,13 @@
 import Title from '@/components/Title';
 import Slider from '@/components/Slider';
 import Carousel from '@/components/Carousel';
+import VideoIframe from '@/components/VideoIframe';
 export default {
   components: {
     'nxt-title': Title,
     slider: Slider,
     carousel: Carousel,
+    videoiframe: VideoIframe,
   },
 
   props: {
@@ -49,6 +51,7 @@ export default {
 }
 .story__card {
   width: 30%;
+  margin-bottom: 50px;
 }
 .story__card-container {
   height: 100%;
@@ -68,16 +71,21 @@ export default {
 }
 
 .story__slider {
-  width: 100%;
+  width: 60%;
+  margin: auto;
 }
 
 @media screen and (max-width: 768px) {
+  .story__card {
+    width: 52%;
+  }
   .story__container {
     flex-direction: column;
     align-items: center;
   }
   .story__title {
     text-align: center;
+    max-width: 100%;
   }
   .story__card-container {
     margin-right: 0;
@@ -86,11 +94,19 @@ export default {
   .story__text {
     max-width: none;
   }
+  .story__slider {
+    margin-right: 54px;
+    margin-left: 54px;
+    width: 92%;
+  }
 }
 
 @media screen and (max-width: 320px) {
   .story__title {
     text-align: justify;
+  }
+  .story__card {
+    width: 100%;
   }
 }
 </style>

@@ -85,7 +85,7 @@ p {
 @media screen and (max-width: 768px) {
   .footer__thanks-title {
     font-size: 24px;
-    max-width: 35%;
+    max-width: 36%;
   }
   .footer__container {
     padding-top: 0;
