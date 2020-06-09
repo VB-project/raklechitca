@@ -1,6 +1,6 @@
 # rak-lechitsa
 
-> project gor nko
+> project for nko
 
 ## Build Setup
 
